@@ -14,6 +14,7 @@
 		DABC66B428DAF246008F57DA /* TwitterAPIDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66B328DAF246008F57DA /* TwitterAPIDemoTests.swift */; };
 		DABC66BE28DAF246008F57DA /* TwitterAPIDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66BD28DAF246008F57DA /* TwitterAPIDemoUITests.swift */; };
 		DABC66C028DAF246008F57DA /* TwitterAPIDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66BF28DAF246008F57DA /* TwitterAPIDemoUITestsLaunchTests.swift */; };
+		DABC66CD28DAF298008F57DA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66CC28DAF298008F57DA /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		DABC66B928DAF246008F57DA /* TwitterAPIDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterAPIDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABC66BD28DAF246008F57DA /* TwitterAPIDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoUITests.swift; sourceTree = "<group>"; };
 		DABC66BF28DAF246008F57DA /* TwitterAPIDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DABC66CC28DAF298008F57DA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */,
 				DABC66A428DAF245008F57DA /* ContentView.swift */,
+				DABC66CC28DAF298008F57DA /* LoginView.swift */,
 				DABC66A628DAF246008F57DA /* Assets.xcassets */,
 				DABC66A828DAF246008F57DA /* Preview Content */,
 			);
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DABC66CD28DAF298008F57DA /* LoginView.swift in Sources */,
 				DABC66A528DAF245008F57DA /* ContentView.swift in Sources */,
 				DABC66A328DAF245008F57DA /* TwitterAPIDemoApp.swift in Sources */,
 			);
