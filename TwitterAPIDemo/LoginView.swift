@@ -7,6 +7,35 @@
 
 import SwiftUI
 
+enum AuthAPI {
+    static func logIn(for id: User.ID,
+                      with password: String) async throws -> IDToken {
+        return IDToken(rawValue: "sample_id_token")
+    }
+}
+
+struct User: Identifiable, Sendable {
+    let id: ID
+    let nickname: String
+    let birthday: Date
+    
+    struct ID: Hashable, Sendable {
+        let rawValue: String
+        
+        init(rawValue: String) {
+            self.rawValue = rawValue
+        }
+    }
+}
+
+struct IDToken: Hashable, Sendable {
+    let rawValue: String
+    
+    init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+}
+
 struct LoginView: View {
     
     @State private var id: String = ""
