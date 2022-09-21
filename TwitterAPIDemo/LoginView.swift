@@ -11,6 +11,7 @@ struct LoginView: View {
     
     @State private var id: String = ""
     @State private var password: String = ""
+    @State private var isPresentingError = false
     
     var body: some View {
         HStack {
@@ -26,13 +27,22 @@ struct LoginView: View {
                 .frame(width: 200)
                 Spacer()
                 Button {
-                    print("Login")
+//                    isPresentingError.toggle()
+                    // ログインのAPIをたたく
+                    
+                    
+                    
                 } label: {
                     Text("Log in")
                 }
 
             }
             Spacer()
+        }
+        .alert("ログインエラー", isPresented: $isPresentingError) {
+            Button("閉じる", action: {})
+        } message: {
+            Text("IDまたはパスワードが正しくありません。")
         }
     }
 }
