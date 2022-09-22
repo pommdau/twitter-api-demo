@@ -11,7 +11,6 @@ struct LoginView: View {
         
     @State private var id: String = ""
     @State private var password: String = ""
-    @State private var isLoginButtonDisable = false
     @ObservedObject private var viewModel = LoginViewModel()
     
     var body: some View {
@@ -35,7 +34,7 @@ struct LoginView: View {
                 } label: {
                     Text("Log in")
                 }
-                .disabled(isLoginButtonDisable)
+                .disabled(!viewModel.isLoginButtonEnabled)
 
             }
             Spacer()

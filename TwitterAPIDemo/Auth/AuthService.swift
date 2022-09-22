@@ -15,7 +15,6 @@ actor AuthService {
     
     func logIn(for id: User.ID,
                with password: String) async throws {
-        
         if isLoggingIn { return }
         isLoggingIn = true
         defer { isLoggingIn = false }
