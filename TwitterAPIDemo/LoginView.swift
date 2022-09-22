@@ -48,11 +48,15 @@ struct IDToken: Hashable, Sendable {
 
 actor IDTokenStore {
     
+    static let shared: IDTokenStore = .init()
+    
+    private init() {}
+    
     var value: IDToken {
         get throws {
             let url: URL = .libraryDirectory.appendingPathComponent("IDToken")
             let data: Data = try .init(contentsOf: url)
-            let rawValue: String = .init(data: data, encoding: .utf8)!            
+            let rawValue: String = .init(data: data, encoding: .utf8)!
             return IDToken(rawValue: rawValue)
         }
     }
@@ -93,13 +97,7 @@ struct LoginView: View {
                         do {
                             let idToken = try await AuthAPI.logIn(for: .init(rawValue: id),
                                                                   with: password)
-                            
-                            _ = try await Task.detached {
-                                let data = idToken.rawValue.data(using: .utf8)!
-                                let url: URL = .libraryDirectory.appendingPathComponent("IDToken")
-                                try data.write(to: url, options: .atomic)
-                            }.value
-                            
+                            try await IDTokenStore.shared.update(idToken)  // 中の処理はサブスレッドになる？
                         } catch {
                             // Error Handling
                         }
