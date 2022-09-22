@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum AuthAPIError: Error {
+    case loginError
+    case unknown
+}
+
 enum AuthAPI {
     static func logIn(for id: User.ID,
                       with password: String) async throws -> IDToken {
@@ -42,7 +47,6 @@ actor AuthService {
         try await IDTokenStore.shared.update(idToken)  // 中の処理はサブスレッドになる？
     }
 }
-
 
 struct User: Identifiable, Sendable {
     let id: ID
@@ -90,10 +94,16 @@ actor IDTokenStore {
 
 struct LoginView: View {
     
+    struct LoginViewErrorInfo {
+        var isPresentingError = false
+        var title = ""
+        var message = ""
+    }
+    
     @State private var id: String = ""
     @State private var password: String = ""
     @State private var isLoginButtonDisable = false
-    @State private var isPresentingError = false
+    @State private var loginViewErrorInfo = LoginViewErrorInfo()
     
     var body: some View {
         HStack {
@@ -117,10 +127,25 @@ struct LoginView: View {
                         do {
                             try await AuthService.shared.logIn(for: .init(rawValue: id),
                                                                with: password)
+                            throw AuthAPIError.loginError
                             // parent?.dismiss(animated: true)  // ログイン画面を閉じる
                         } catch {
                             // Error Handling
                             // logger.warning("\(error)")
+                            switch error {
+                            case AuthAPIError.loginError:
+                                loginViewErrorInfo = LoginViewErrorInfo(isPresentingError: true,
+                                                                        title: "ログインエラー",
+                                                                        message: "IDまたはパスワードが正しくありません")
+                            case AuthAPIError.unknown:
+                                loginViewErrorInfo = LoginViewErrorInfo(isPresentingError: true,
+                                                                        title: "ログインエラー",
+                                                                        message: "不明なエラーが発生しました")
+                            default:
+                                loginViewErrorInfo = LoginViewErrorInfo(isPresentingError: true,
+                                                                        title: "不明なエラー",
+                                                                        message: "不明なエラーが発生しました")
+                            }
                         }
                     }
                 } label: {
@@ -131,10 +156,10 @@ struct LoginView: View {
             }
             Spacer()
         }
-        .alert("ログインエラー", isPresented: $isPresentingError) {
+        .alert(loginViewErrorInfo.title, isPresented: $loginViewErrorInfo.isPresentingError) {
             Button("閉じる", action: {})
         } message: {
-            Text("IDまたはパスワードが正しくありません。")
+            Text(loginViewErrorInfo.message)
         }
     }
 }
