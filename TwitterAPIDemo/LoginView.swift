@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @Binding var isPresentingLoginView: Bool
+    @Binding var isPresentingLoginView: Bool  // TODO: viewModelに渡して、viewModel.loginButtonPressed()の中で値を更新したい。
     @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
@@ -37,10 +37,10 @@ struct LoginView: View {
             }
             Spacer()
         }
-        .alert(viewModel.loginViewErrorInfo.title, isPresented: $viewModel.loginViewErrorInfo.isPresentingError) {
+        .alert(viewModel.errorInfo.title, isPresented: $viewModel.errorInfo.isPresentingError) {
             Button("閉じる", action: {})
         } message: {
-            Text(viewModel.loginViewErrorInfo.message)
+            Text(viewModel.errorInfo.message)
         }
     }
 }

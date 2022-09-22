@@ -15,7 +15,7 @@ struct ContentView: View {
         if isPresentingLoginView {
             LoginView(isPresentingLoginView: $isPresentingLoginView)
         } else {
-            Text("next Login...")
+            Text("next Login View...")
         }
     }
     
