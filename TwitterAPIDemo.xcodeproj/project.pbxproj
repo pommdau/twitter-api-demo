@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA7BD95128DC0198002A92BA /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95028DC0198002A92BA /* AuthAPI.swift */; };
+		DA7BD95328DC01AE002A92BA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95228DC01AE002A92BA /* AuthService.swift */; };
+		DA7BD95528DC01B9002A92BA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95428DC01B9002A92BA /* User.swift */; };
+		DA7BD95728DC01C2002A92BA /* IDToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95628DC01C2002A92BA /* IDToken.swift */; };
+		DA7BD95928DC01CA002A92BA /* IDTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95828DC01CA002A92BA /* IDTokenStore.swift */; };
 		DABC66A328DAF245008F57DA /* TwitterAPIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */; };
 		DABC66A528DAF245008F57DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66A428DAF245008F57DA /* ContentView.swift */; };
 		DABC66A728DAF246008F57DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DABC66A628DAF246008F57DA /* Assets.xcassets */; };
@@ -35,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA7BD95028DC0198002A92BA /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		DA7BD95228DC01AE002A92BA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		DA7BD95428DC01B9002A92BA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DA7BD95628DC01C2002A92BA /* IDToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDToken.swift; sourceTree = "<group>"; };
+		DA7BD95828DC01CA002A92BA /* IDTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDTokenStore.swift; sourceTree = "<group>"; };
 		DABC669F28DAF245008F57DA /* TwitterAPIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterAPIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoApp.swift; sourceTree = "<group>"; };
 		DABC66A428DAF245008F57DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +83,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA7BD94F28DC0191002A92BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BD95428DC01B9002A92BA /* User.swift */,
+				DA7BD95628DC01C2002A92BA /* IDToken.swift */,
+				DA7BD95828DC01CA002A92BA /* IDTokenStore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA7BD95A28DC01E1002A92BA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BD95228DC01AE002A92BA /* AuthService.swift */,
+				DA7BD95028DC0198002A92BA /* AuthAPI.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		DABC669628DAF245008F57DA = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +125,8 @@
 		DABC66A128DAF245008F57DA /* TwitterAPIDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DA7BD95A28DC01E1002A92BA /* Auth */,
+				DA7BD94F28DC0191002A92BA /* Models */,
 				DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */,
 				DABC66A428DAF245008F57DA /* ContentView.swift */,
 				DABC66CC28DAF298008F57DA /* LoginView.swift */,
@@ -260,7 +291,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7BD95928DC01CA002A92BA /* IDTokenStore.swift in Sources */,
+				DA7BD95128DC0198002A92BA /* AuthAPI.swift in Sources */,
+				DA7BD95728DC01C2002A92BA /* IDToken.swift in Sources */,
 				DABC66CD28DAF298008F57DA /* LoginView.swift in Sources */,
+				DA7BD95528DC01B9002A92BA /* User.swift in Sources */,
+				DA7BD95328DC01AE002A92BA /* AuthService.swift in Sources */,
 				DABC66A528DAF245008F57DA /* ContentView.swift in Sources */,
 				DABC66A328DAF245008F57DA /* TwitterAPIDemoApp.swift in Sources */,
 			);
