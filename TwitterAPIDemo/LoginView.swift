@@ -15,6 +15,7 @@ enum AuthAPI {
         let request = URLRequest(url: url)
         
         do {
+            // DEMO
             let (data, response) = try await URLSession.shared.data(for: request)
         } catch {
             print(error.localizedDescription)
@@ -23,6 +24,25 @@ enum AuthAPI {
         return IDToken(rawValue: "sample_id_token")
     }
 }
+
+actor AuthService {
+    
+    static let shared: AuthService = .init()
+    
+    private var isLoggingIn: Bool = false
+    
+    func logIn(for id: User.ID,
+               with password: String) async throws {
+        
+        if isLoggingIn { return }
+        isLoggingIn = true
+        defer { isLoggingIn = false }
+        
+        let idToken = try await AuthAPI.logIn(for: id, with: password)
+        try await IDTokenStore.shared.update(idToken)  // 中の処理はサブスレッドになる？
+    }
+}
+
 
 struct User: Identifiable, Sendable {
     let id: ID
@@ -95,13 +115,13 @@ struct LoginView: View {
                         isLoginButtonDisable = true
                         defer { isLoginButtonDisable = false }
                         do {
-                            let idToken = try await AuthAPI.logIn(for: .init(rawValue: id),
-                                                                  with: password)
-                            try await IDTokenStore.shared.update(idToken)  // 中の処理はサブスレッドになる？
+                            try await AuthService.shared.logIn(for: .init(rawValue: id),
+                                                               with: password)
+                            // parent?.dismiss(animated: true)  // ログイン画面を閉じる
                         } catch {
                             // Error Handling
+                            // logger.warning("\(error)")
                         }
-                        
                     }
                 } label: {
                     Text("Log in")
