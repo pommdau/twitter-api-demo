@@ -10,6 +10,16 @@ import SwiftUI
 enum AuthAPI {
     static func logIn(for id: User.ID,
                       with password: String) async throws -> IDToken {
+        
+        let url = URL(string: "https://www.google.co.jp/")!
+        let request = URLRequest(url: url)
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         return IDToken(rawValue: "sample_id_token")
     }
 }
@@ -58,9 +68,14 @@ struct LoginView: View {
                 Button {
 //                    isPresentingError.toggle()
                     // ログインのAPIをたたく
-                    
-                    
-                    
+                    Task {
+                        do {
+                            let idToken = try await AuthAPI.logIn(for: .init(rawValue: id),
+                                                                  with: password)
+                        } catch {
+                            // Error Handling
+                        }
+                    }
                 } label: {
                     Text("Log in")
                 }
