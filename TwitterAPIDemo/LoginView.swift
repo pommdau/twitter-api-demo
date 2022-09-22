@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
-        
-    @State private var id: String = ""
-    @State private var password: String = ""
-    @ObservedObject private var viewModel = LoginViewModel()
+    
+    @Binding var isPresentingLoginView: Bool
+    @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
         HStack {
@@ -19,9 +18,9 @@ struct LoginView: View {
             VStack {
                 Spacer()
                 VStack {
-                    TextField("ID", text: $id)
+                    TextField("ID", text: $viewModel.id)
                         .textFieldStyle(.roundedBorder)
-                    SecureField("Password", text: $password)
+                    SecureField("Password", text: $viewModel.password)
                         .textFieldStyle(.roundedBorder)
                 }
                 .frame(width: 200)
@@ -35,7 +34,6 @@ struct LoginView: View {
                     Text("Log in")
                 }
                 .disabled(!viewModel.isLoginButtonEnabled)
-
             }
             Spacer()
         }
@@ -49,6 +47,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(isPresentingLoginView: .constant(true))
     }
 }

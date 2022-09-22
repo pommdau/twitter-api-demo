@@ -9,9 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @State private var isPresentingLoginView = true
+    
     var body: some View {
-        LoginView()
+        if isPresentingLoginView {
+            LoginView(isPresentingLoginView: $isPresentingLoginView)
+        } else {
+            Text("next Login...")
+        }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
