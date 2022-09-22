@@ -46,6 +46,24 @@ struct IDToken: Hashable, Sendable {
     }
 }
 
+actor IDTokenStore {
+    
+    var value: IDToken {
+        get throws {
+            let url: URL = .libraryDirectory.appendingPathComponent("IDToken")
+            let data: Data = try .init(contentsOf: url)
+            let rawValue: String = .init(data: data, encoding: .utf8)!            
+            return IDToken(rawValue: rawValue)
+        }
+    }
+    
+    func update(_ value: IDToken) throws {
+        let data = value.rawValue.data(using: .utf8)!
+        let url: URL = .libraryDirectory.appendingPathComponent("IDToken")
+        try data.write(to: url, options: .atomic)
+    }
+}
+
 struct LoginView: View {
     
     @State private var id: String = ""
@@ -76,11 +94,12 @@ struct LoginView: View {
                             let idToken = try await AuthAPI.logIn(for: .init(rawValue: id),
                                                                   with: password)
                             
-                            Task.detached {
+                            _ = try await Task.detached {
                                 let data = idToken.rawValue.data(using: .utf8)!
                                 let url: URL = .libraryDirectory.appendingPathComponent("IDToken")
                                 try data.write(to: url, options: .atomic)
-                            }
+                            }.value
+                            
                         } catch {
                             // Error Handling
                         }
