@@ -50,6 +50,7 @@ struct LoginView: View {
     
     @State private var id: String = ""
     @State private var password: String = ""
+    @State private var isLoginButtonDisable = false
     @State private var isPresentingError = false
     
     var body: some View {
@@ -68,17 +69,27 @@ struct LoginView: View {
                 Button {
 //                    isPresentingError.toggle()
                     // ログインのAPIをたたく
-                    Task {
+                    Task { @MainActor in
+                        isLoginButtonDisable = true
+                        defer { isLoginButtonDisable = false }
                         do {
                             let idToken = try await AuthAPI.logIn(for: .init(rawValue: id),
                                                                   with: password)
+                            
+                            Task.detached {
+                                let data = idToken.rawValue.data(using: .utf8)!
+                                let url: URL = .libraryDirectory.appendingPathComponent("IDToken")
+                                try data.write(to: url, options: .atomic)
+                            }
                         } catch {
                             // Error Handling
                         }
+                        
                     }
                 } label: {
                     Text("Log in")
                 }
+                .disabled(isLoginButtonDisable)
 
             }
             Spacer()
