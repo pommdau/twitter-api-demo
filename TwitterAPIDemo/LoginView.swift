@@ -19,8 +19,10 @@ struct LoginView: View {
                 Spacer()
                 VStack {
                     TextField("ID", text: $viewModel.id)
+                        .textInputAutocapitalization(.never)
                         .textFieldStyle(.roundedBorder)
                     SecureField("Password", text: $viewModel.password)
+                        .textInputAutocapitalization(.never)
                         .textFieldStyle(.roundedBorder)
                 }
                 .frame(width: 200)
@@ -28,10 +30,7 @@ struct LoginView: View {
                 Button {
                     // ログインのAPIをたたく
                     Task { @MainActor in
-                        if await viewModel.loginButtonPressed() {
-                            // ログインに成功したら画面を閉じる
-                            dismiss()
-                        }
+                        await viewModel.loginButtonPressed()
                     }
                 } label: {
                     Text("Log in")
@@ -39,6 +38,9 @@ struct LoginView: View {
                 .disabled(!viewModel.isLoginButtonEnabled)
             }
             Spacer()
+        }
+        .onReceive(viewModel.dismiss) { _ in
+            dismiss()
         }
         .alert(viewModel.errorWrapper.title,
                isPresented: $viewModel.errorWrapper.isPresentingError) {

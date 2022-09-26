@@ -50,14 +50,17 @@ final class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published private(set) var isLoginButtonEnabled: Bool = true
     @Published var errorWrapper = ErrorWrapper(isPresentingError: false)
-        
-    func loginButtonPressed() async -> Bool {
+    
+    let dismiss: PassthroughSubject<Void, Never> = .init()
+    
+    func loginButtonPressed() async {
         isLoginButtonEnabled = false
         defer { isLoginButtonEnabled = true }
         do {
             try await AuthService.shared.logIn(for: .init(rawValue: id),
                                                with: password)
 //            throw AuthAPIError.loginError  // デバッグ用
+            dismiss.send()
         } catch {
             // Error Handling
             // logger.warning("\(error)")
@@ -67,10 +70,6 @@ final class LoginViewModel: ObservableObject {
             default:
                 errorWrapper = ErrorWrapper(loginError: .unknown)
             }
-            
-            return false
         }
-        
-        return true
     }    
 }
