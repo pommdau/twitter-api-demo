@@ -18,20 +18,20 @@ final class TwitterAPIDemoTests: XCTestCase {
     }
     
     func testLoginErrorMessageByLoginError() async {
-        let viewModel: LoginViewModel<AuthService> = .init()
+        let viewModel: LoginViewModel<StubAuthService> = .init()
         await viewModel.loginButtonPressed()  // LoginError
-//        XCTAssertEqual(viewModel.errorWrapper.loginError, .login)
+        XCTAssertEqual(viewModel.errorWrapper.apiError, .login)
     }
 
 }
-//
-//private final class StubAuthService: AuthServiceProtocol {
-//
-//    static var shared: StubAuthService = .init()
-//    private init() {}
-//    
-//    func logIn(for id: User.ID, with password: String) async throws {
-//        throw LoginViewModel.LoginError.login
-//    }
-//    
-//}
+
+private final class StubAuthService: AuthServiceProtocol {
+
+    static var shared: StubAuthService = .init()
+    private init() {}
+    
+    func logIn(for id: User.ID, with password: String) async throws {
+        throw AuthAPIError.login
+    }
+    
+}
