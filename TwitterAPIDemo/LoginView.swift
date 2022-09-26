@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @Binding var isPresentingLoginView: Bool  // TODO: viewModelに渡して、viewModel.loginButtonPressed()の中で値を更新したい。
+    @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
@@ -28,7 +28,10 @@ struct LoginView: View {
                 Button {
                     // ログインのAPIをたたく
                     Task { @MainActor in
-                        await viewModel.loginButtonPressed()
+                        if await viewModel.loginButtonPressed() {
+                            // ログインに成功したら画面を閉じる
+                            dismiss()
+                        }
                     }
                 } label: {
                     Text("Log in")
@@ -47,6 +50,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(isPresentingLoginView: .constant(true))
+        LoginView()
     }
 }

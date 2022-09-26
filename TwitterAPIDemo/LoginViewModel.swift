@@ -23,14 +23,13 @@ final class LoginViewModel: ObservableObject {
     @Published private(set) var isLoginButtonEnabled: Bool = true
     @Published var errorInfo = ErrorInfo()
         
-    func loginButtonPressed() async {
+    func loginButtonPressed() async -> Bool {
         isLoginButtonEnabled = false
         defer { isLoginButtonEnabled = true }
         do {
             try await AuthService.shared.logIn(for: .init(rawValue: id),
                                                with: password)
-            throw AuthAPIError.loginError
-            // parent?.dismiss(animated: true)  // ログイン画面を閉じる
+//            throw AuthAPIError.loginError  // デバッグ用
         } catch {
             // Error Handling
             // logger.warning("\(error)")
@@ -48,7 +47,10 @@ final class LoginViewModel: ObservableObject {
                                                         title: "不明なエラー",
                                                         message: "不明なエラーが発生しました")
             }
+            
+            return false
         }
-    }
-    
+        
+        return true
+    }    
 }

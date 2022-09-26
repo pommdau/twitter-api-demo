@@ -12,13 +12,15 @@ struct ContentView: View {
     @State private var isPresentingLoginView = true
     
     var body: some View {
-        if isPresentingLoginView {
-            LoginView(isPresentingLoginView: $isPresentingLoginView)
-        } else {
-            Text("next Login View...")
+        Button {
+            isPresentingLoginView.toggle()
+        } label: {
+            Text("Login View")
+        }
+        .sheet(isPresented: $isPresentingLoginView) {
+            LoginView()
         }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
