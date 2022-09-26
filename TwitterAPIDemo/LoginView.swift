@@ -40,10 +40,11 @@ struct LoginView: View {
             }
             Spacer()
         }
-        .alert(viewModel.errorInfo.title, isPresented: $viewModel.errorInfo.isPresentingError) {
+        .alert(viewModel.errorWrapper.title,
+               isPresented: $viewModel.errorWrapper.isPresentingError) {
             Button("閉じる", action: {})
         } message: {
-            Text(viewModel.errorInfo.message)
+            Text(viewModel.errorWrapper.message)
         }
     }
 }

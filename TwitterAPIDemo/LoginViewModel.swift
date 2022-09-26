@@ -12,16 +12,44 @@ import Combine
 @MainActor
 final class LoginViewModel: ObservableObject {
     
-    struct ErrorInfo {
-        var isPresentingError = false
-        var title = ""
-        var message = ""
+    struct ErrorWrapper {
+
+        var loginError: LoginError? = nil
+        var isPresentingError = true
+
+        var title: String {
+            return "ログインエラー"
+        }
+
+        var message: String {
+            guard let loginError = loginError else { return "" }
+            switch loginError {
+            case .login:
+                return "IDまたはパスワードが正しくありません"
+            case .network:
+                return "ネットワークのエラーが発生しました"
+            case .server:
+                return "サーバーのエラーが発生しました"
+            case .system:
+                return "システムのエラーが発生しました"
+            case .unknown:
+                return "不明なエラーが発生しました"
+            }
+        }
+    }
+    
+    enum LoginError: Hashable {
+        case login
+        case network
+        case server
+        case system
+        case unknown
     }
     
     @Published var id: String = ""
     @Published var password: String = ""
     @Published private(set) var isLoginButtonEnabled: Bool = true
-    @Published var errorInfo = ErrorInfo()
+    @Published var errorWrapper = ErrorWrapper(isPresentingError: false)
         
     func loginButtonPressed() async -> Bool {
         isLoginButtonEnabled = false
@@ -35,17 +63,9 @@ final class LoginViewModel: ObservableObject {
             // logger.warning("\(error)")
             switch error {
             case AuthAPIError.loginError:
-                errorInfo = ErrorInfo(isPresentingError: true,
-                                                        title: "ログインエラー",
-                                                        message: "IDまたはパスワードが正しくありません")
-            case AuthAPIError.unknown:
-                errorInfo = ErrorInfo(isPresentingError: true,
-                                                        title: "ログインエラー",
-                                                        message: "不明なエラーが発生しました")
+                errorWrapper = ErrorWrapper(loginError: .login)
             default:
-                errorInfo = ErrorInfo(isPresentingError: true,
-                                                        title: "不明なエラー",
-                                                        message: "不明なエラーが発生しました")
+                errorWrapper = ErrorWrapper(loginError: .unknown)
             }
             
             return false
