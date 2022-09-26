@@ -19,19 +19,9 @@ final class TwitterAPIDemoTests: XCTestCase {
     
     func testLoginErrorMessageByLoginError() async {
         let viewModel: LoginViewModel<StubAuthService> = .init()
+        
+        StubAuthService.shared.logInResult = .failure(AuthAPIError.login)
         await viewModel.loginButtonPressed()  // LoginError
         XCTAssertEqual(viewModel.errorWrapper.apiError, .login)
     }
-
-}
-
-private final class StubAuthService: AuthServiceProtocol {
-
-    static var shared: StubAuthService = .init()
-    private init() {}
-    
-    func logIn(for id: User.ID, with password: String) async throws {
-        throw AuthAPIError.login
-    }
-    
 }

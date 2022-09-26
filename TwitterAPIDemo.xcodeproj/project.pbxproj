@@ -15,6 +15,7 @@
 		DA7BD95C28DC05AA002A92BA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95B28DC05AA002A92BA /* LoginViewModel.swift */; };
 		DAB2D43F28E1823B004CD870 /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D43E28E1823B004CD870 /* AuthServiceProtocol.swift */; };
 		DAB2D44128E18DA7004CD870 /* AuthAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D44028E18DA6004CD870 /* AuthAPIError.swift */; };
+		DAB2D44328E19A24004CD870 /* StubAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D44228E19A24004CD870 /* StubAuthService.swift */; };
 		DABC66A328DAF245008F57DA /* TwitterAPIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */; };
 		DABC66A528DAF245008F57DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66A428DAF245008F57DA /* ContentView.swift */; };
 		DABC66A728DAF246008F57DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DABC66A628DAF246008F57DA /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		DA7BD95B28DC05AA002A92BA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DAB2D43E28E1823B004CD870 /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
 		DAB2D44028E18DA6004CD870 /* AuthAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIError.swift; sourceTree = "<group>"; };
+		DAB2D44228E19A24004CD870 /* StubAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAuthService.swift; sourceTree = "<group>"; };
 		DABC669F28DAF245008F57DA /* TwitterAPIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterAPIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoApp.swift; sourceTree = "<group>"; };
 		DABC66A428DAF245008F57DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				DABC66B328DAF246008F57DA /* TwitterAPIDemoTests.swift */,
+				DAB2D44228E19A24004CD870 /* StubAuthService.swift */,
 			);
 			path = TwitterAPIDemoTests;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DABC66B428DAF246008F57DA /* TwitterAPIDemoTests.swift in Sources */,
+				DAB2D44328E19A24004CD870 /* StubAuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,8 +35,8 @@ final class LoginViewModel<AuthService>: ObservableObject where AuthService: Aut
             dismiss.send()
         } catch {
             switch error {
-            case is AuthAPIError:
-                errorWrapper = .init(apiError: .login)
+            case let apiError as AuthAPIError:
+                errorWrapper = .init(apiError: apiError)
             default:
                 errorWrapper = .init(apiError: .unknown)
             }
