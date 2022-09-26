@@ -4,13 +4,9 @@
 //
 //  Created by HIROKI IKEUCHI on 2022/09/22.
 //
+//  純粋な通信部分の機能を実装する
 
 import Foundation
-
-enum AuthAPIError: Error {
-    case loginError
-    case unknown
-}
 
 enum AuthAPI {
     static func logIn(for id: User.ID,

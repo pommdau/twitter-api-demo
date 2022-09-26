@@ -7,7 +7,7 @@
 
 import Foundation
 
-actor AuthService {
+actor AuthService: AuthServiceProtocol {
     
     static let shared: AuthService = .init()
     

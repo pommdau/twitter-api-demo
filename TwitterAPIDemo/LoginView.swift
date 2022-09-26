@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     
     @Environment(\.dismiss) var dismiss
-    @StateObject private var viewModel = LoginViewModel()
+    @StateObject private var viewModel: LoginViewModel<AuthService> = .init()
     
     var body: some View {
         HStack {
@@ -42,11 +42,11 @@ struct LoginView: View {
         .onReceive(viewModel.dismiss) { _ in
             dismiss()
         }
-        .alert(viewModel.errorWrapper.title,
+        .alert(viewModel.errorWrapper.apiError.title,
                isPresented: $viewModel.errorWrapper.isPresentingError) {
             Button("閉じる", action: {})
         } message: {
-            Text(viewModel.errorWrapper.message)
+            Text(viewModel.errorWrapper.apiError.guidance)
         }
     }
 }
