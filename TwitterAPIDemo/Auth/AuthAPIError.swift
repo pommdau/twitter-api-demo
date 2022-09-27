@@ -7,40 +7,14 @@
 
 import Foundation
 
-enum AuthAPIError: Error, Hashable {
-    case login
-    case network
-    case server
-    case system
-    case unknown
-    
-    var title: String {
-        switch self {
-        case .login:
-            return "ログインエラー"
-        case .network:
-            return "ネットワークのエラー"
-        case .server:
-            return "サーバエラー"
-        case .system:
-            return "システムエラー"
-        case .unknown:
-            return "不明なエラー"
-        }
+// TODO: TwitterAPIのエラー形式に合わせる
+public struct AuthAPIError : Decodable, Error {
+    public struct Error : Decodable {
+        public var resource: String
+        public var field: String
+        public var code: String
     }
     
-    var guidance: String {
-        switch self {
-        case .login:
-            return "IDまたはパスワードが正しくありません"
-        case .network:
-            return "ネットワークのエラーが発生しました"
-        case .server:
-            return "サーバのエラーが発生しました"
-        case .system:
-            return "システムのエラーが発生しました"
-        case .unknown:
-            return "不明なエラーが発生しました"
-        }
-    }
+    public var message: String  // レスポンスのJSONに必ず含まれる
+    public var errors: [Error]
 }

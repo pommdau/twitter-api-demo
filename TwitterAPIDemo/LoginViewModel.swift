@@ -13,7 +13,7 @@ import Combine
 final class LoginViewModel<AuthService>: ObservableObject where AuthService: AuthServiceProtocol {
     
     struct ErrorWrapper {
-        var apiError: AuthAPIError = .unknown
+        var authServiceError: AuthServiceError = .unknown
         var isPresentingError = true
     }
         
@@ -31,15 +31,17 @@ final class LoginViewModel<AuthService>: ObservableObject where AuthService: Aut
         do {
             try await AuthService.shared.logIn(for: .init(rawValue: id),
                                                with: password)
-//            throw AuthAPIError.loginError  // デバッグ用
+//            throw AuthServiceError.unknown  // デバッグ用
             dismiss.send()
         } catch {
-            switch error {
-            case let apiError as AuthAPIError:
-                errorWrapper = .init(apiError: apiError)
-            default:
-                errorWrapper = .init(apiError: .unknown)
+            
+            guard let authServiceError = error as? AuthServiceError else {
+                errorWrapper = ErrorWrapper(authServiceError: .unknown)
+                return
             }
+            
+            errorWrapper = ErrorWrapper(authServiceError: authServiceError)
+            return;
         }
     }    
 }

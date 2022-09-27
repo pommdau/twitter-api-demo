@@ -24,4 +24,12 @@ final class TwitterAPIDemoTests: XCTestCase {
         await viewModel.loginButtonPressed()  // LoginError
         XCTAssertEqual(viewModel.errorWrapper.apiError, .login)
     }
+    
+    func testLoginErrorMessageByServerError() async {
+        let viewModel: LoginViewModel<StubAuthService> = .init()
+        
+        StubAuthService.shared.logInResult = .failure(AuthAPIError.login)
+        await viewModel.loginButtonPressed()  // LoginError
+        XCTAssertEqual(viewModel.errorWrapper.apiError, .server)
+    }
 }

@@ -42,11 +42,11 @@ struct LoginView: View {
         .onReceive(viewModel.dismiss) { _ in
             dismiss()
         }
-        .alert(viewModel.errorWrapper.apiError.title,
+        .alert(viewModel.errorWrapper.authServiceError.title,
                isPresented: $viewModel.errorWrapper.isPresentingError) {
             Button("閉じる", action: {})
         } message: {
-            Text(viewModel.errorWrapper.apiError.guidance)
+            Text(viewModel.errorWrapper.authServiceError.guidance)
         }
     }
 }
