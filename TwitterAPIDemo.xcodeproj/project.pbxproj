@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA7BD95128DC0198002A92BA /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95028DC0198002A92BA /* AuthAPI.swift */; };
+		DA7BD95328DC01AE002A92BA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95228DC01AE002A92BA /* AuthService.swift */; };
+		DA7BD95528DC01B9002A92BA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95428DC01B9002A92BA /* User.swift */; };
+		DA7BD95728DC01C2002A92BA /* IDToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95628DC01C2002A92BA /* IDToken.swift */; };
+		DA7BD95928DC01CA002A92BA /* IDTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95828DC01CA002A92BA /* IDTokenStore.swift */; };
+		DA7BD95C28DC05AA002A92BA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD95B28DC05AA002A92BA /* LoginViewModel.swift */; };
+		DAB2D43F28E1823B004CD870 /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D43E28E1823B004CD870 /* AuthServiceProtocol.swift */; };
+		DAB2D44128E18DA7004CD870 /* AuthAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D44028E18DA6004CD870 /* AuthAPIError.swift */; };
+		DAB2D44328E19A24004CD870 /* StubAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D44228E19A24004CD870 /* StubAuthService.swift */; };
+		DAB2D44528E1CF9B004CD870 /* AuthServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D44428E1CF9B004CD870 /* AuthServiceError.swift */; };
 		DABC66A328DAF245008F57DA /* TwitterAPIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */; };
 		DABC66A528DAF245008F57DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66A428DAF245008F57DA /* ContentView.swift */; };
 		DABC66A728DAF246008F57DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DABC66A628DAF246008F57DA /* Assets.xcassets */; };
@@ -14,6 +24,7 @@
 		DABC66B428DAF246008F57DA /* TwitterAPIDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66B328DAF246008F57DA /* TwitterAPIDemoTests.swift */; };
 		DABC66BE28DAF246008F57DA /* TwitterAPIDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66BD28DAF246008F57DA /* TwitterAPIDemoUITests.swift */; };
 		DABC66C028DAF246008F57DA /* TwitterAPIDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66BF28DAF246008F57DA /* TwitterAPIDemoUITestsLaunchTests.swift */; };
+		DABC66CD28DAF298008F57DA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC66CC28DAF298008F57DA /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +45,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA7BD95028DC0198002A92BA /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		DA7BD95228DC01AE002A92BA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		DA7BD95428DC01B9002A92BA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DA7BD95628DC01C2002A92BA /* IDToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDToken.swift; sourceTree = "<group>"; };
+		DA7BD95828DC01CA002A92BA /* IDTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDTokenStore.swift; sourceTree = "<group>"; };
+		DA7BD95B28DC05AA002A92BA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DAB2D43E28E1823B004CD870 /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
+		DAB2D44028E18DA6004CD870 /* AuthAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIError.swift; sourceTree = "<group>"; };
+		DAB2D44228E19A24004CD870 /* StubAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAuthService.swift; sourceTree = "<group>"; };
+		DAB2D44428E1CF9B004CD870 /* AuthServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceError.swift; sourceTree = "<group>"; };
 		DABC669F28DAF245008F57DA /* TwitterAPIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterAPIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoApp.swift; sourceTree = "<group>"; };
 		DABC66A428DAF245008F57DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +65,7 @@
 		DABC66B928DAF246008F57DA /* TwitterAPIDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterAPIDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABC66BD28DAF246008F57DA /* TwitterAPIDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoUITests.swift; sourceTree = "<group>"; };
 		DABC66BF28DAF246008F57DA /* TwitterAPIDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DABC66CC28DAF298008F57DA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +93,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA7BD94F28DC0191002A92BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BD95428DC01B9002A92BA /* User.swift */,
+				DA7BD95628DC01C2002A92BA /* IDToken.swift */,
+				DA7BD95828DC01CA002A92BA /* IDTokenStore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA7BD95A28DC01E1002A92BA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				DAB2D43E28E1823B004CD870 /* AuthServiceProtocol.swift */,
+				DA7BD95028DC0198002A92BA /* AuthAPI.swift */,
+				DA7BD95228DC01AE002A92BA /* AuthService.swift */,
+				DAB2D44428E1CF9B004CD870 /* AuthServiceError.swift */,
+				DAB2D44028E18DA6004CD870 /* AuthAPIError.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		DABC669628DAF245008F57DA = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +138,12 @@
 		DABC66A128DAF245008F57DA /* TwitterAPIDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DA7BD95A28DC01E1002A92BA /* Auth */,
+				DA7BD94F28DC0191002A92BA /* Models */,
 				DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */,
 				DABC66A428DAF245008F57DA /* ContentView.swift */,
+				DABC66CC28DAF298008F57DA /* LoginView.swift */,
+				DA7BD95B28DC05AA002A92BA /* LoginViewModel.swift */,
 				DABC66A628DAF246008F57DA /* Assets.xcassets */,
 				DABC66A828DAF246008F57DA /* Preview Content */,
 			);
@@ -114,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				DABC66B328DAF246008F57DA /* TwitterAPIDemoTests.swift */,
+				DAB2D44228E19A24004CD870 /* StubAuthService.swift */,
 			);
 			path = TwitterAPIDemoTests;
 			sourceTree = "<group>";
@@ -257,8 +306,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7BD95928DC01CA002A92BA /* IDTokenStore.swift in Sources */,
+				DAB2D44128E18DA7004CD870 /* AuthAPIError.swift in Sources */,
+				DA7BD95128DC0198002A92BA /* AuthAPI.swift in Sources */,
+				DA7BD95728DC01C2002A92BA /* IDToken.swift in Sources */,
+				DAB2D43F28E1823B004CD870 /* AuthServiceProtocol.swift in Sources */,
+				DABC66CD28DAF298008F57DA /* LoginView.swift in Sources */,
+				DAB2D44528E1CF9B004CD870 /* AuthServiceError.swift in Sources */,
+				DA7BD95528DC01B9002A92BA /* User.swift in Sources */,
+				DA7BD95328DC01AE002A92BA /* AuthService.swift in Sources */,
 				DABC66A528DAF245008F57DA /* ContentView.swift in Sources */,
 				DABC66A328DAF245008F57DA /* TwitterAPIDemoApp.swift in Sources */,
+				DA7BD95C28DC05AA002A92BA /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DABC66B428DAF246008F57DA /* TwitterAPIDemoTests.swift in Sources */,
+				DAB2D44328E19A24004CD870 /* StubAuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @State private var isPresentingLoginView = true
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Button {
+            isPresentingLoginView.toggle()
+        } label: {
+            Text("Login View")
         }
-        .padding()
+        .sheet(isPresented: $isPresentingLoginView) {
+            LoginView()
+        }
     }
 }
 

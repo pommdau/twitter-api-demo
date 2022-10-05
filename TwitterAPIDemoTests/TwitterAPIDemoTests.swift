@@ -8,29 +8,42 @@
 import XCTest
 @testable import TwitterAPIDemo
 
+@MainActor
 final class TwitterAPIDemoTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+     
+    // MARK: - API Test
+    
+    func testLoginErrorMessageByLoginError() async {
+        let viewModel: LoginViewModel<StubAuthService> = .init()
+        
+        StubAuthService.shared.logInResult = .failure(AuthServiceError.login)
+        await viewModel.loginButtonPressed()  // LoginError
+                
+        // [SwiftのEnumをif文で比較できない（Associated Value）](https://qiita.com/y_koh/items/204f04ab11677bd73444)
+        guard case AuthServiceError.login = viewModel.errorWrapper.authServiceError! else {
+            XCTFail()
+            return
         }
     }
-
+    
+    // MARK: - LoginButton Tests
+    
+    func testLoginButtonEnabled() async {
+        let viewModel: LoginViewModel<StubAuthService> = .init()
+        StubAuthService.shared.logInResult = .success(())
+        
+        // ボタン押下前後の状態を確認
+        XCTAssertTrue(viewModel.isLoginButtonEnabled)
+        // iosdcの動画が出たら確認する
+//        async let logIn: Void = viewModel.loginButtonPressed()
+//        XCTAssertFalse(viewModel.isLoginButtonEnabled)
+//        await logIn
+//        XCTAssertTrue(viewModel.isLoginButtonEnabled)
+    }
 }
