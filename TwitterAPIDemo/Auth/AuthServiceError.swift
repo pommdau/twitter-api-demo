@@ -22,8 +22,6 @@ enum AuthServiceError : Error {
     
     case others(Error)
     
-    case unknown
-    
     var title: String {
         switch self {
         case .connectionError(_):
@@ -36,8 +34,6 @@ enum AuthServiceError : Error {
             return "HTTP処理エラー"
         case .others(_):
             return "その他のエラー"
-        case .unknown:
-            return "不明なエラー"
         }
     }
     
@@ -53,8 +49,6 @@ enum AuthServiceError : Error {
         case .httpURLResponseCastError:
             return ""
         case .others(_):
-            return ""
-        case .unknown:
             return ""
         }
     }

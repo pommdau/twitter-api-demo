@@ -13,14 +13,14 @@ import Combine
 final class LoginViewModel<AuthService>: ObservableObject where AuthService: AuthServiceProtocol {
     
     struct ErrorWrapper {
-        var authServiceError: AuthServiceError = .unknown
-        var isPresentingError = true
+        var authServiceError: AuthServiceError? = nil
+        var isPresentingError = false
     }
         
     @Published var id: String = ""
     @Published var password: String = ""
     @Published private(set) var isLoginButtonEnabled: Bool = true
-    @Published var errorWrapper = ErrorWrapper(isPresentingError: false)
+    @Published var errorWrapper = ErrorWrapper()
     
     let dismiss: PassthroughSubject<Void, Never> = .init()
     
@@ -34,14 +34,12 @@ final class LoginViewModel<AuthService>: ObservableObject where AuthService: Aut
 //            throw AuthServiceError.unknown  // デバッグ用
             dismiss.send()
         } catch {
-            
             guard let authServiceError = error as? AuthServiceError else {
-                errorWrapper = ErrorWrapper(authServiceError: .unknown)
+                errorWrapper = ErrorWrapper(authServiceError: .others(error))
                 return
             }
-            
             errorWrapper = ErrorWrapper(authServiceError: authServiceError)
-            return;
+            return
         }
     }    
 }

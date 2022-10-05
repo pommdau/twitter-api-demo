@@ -16,17 +16,16 @@ final class TwitterAPIDemoTests: XCTestCase {
 
     override func tearDownWithError() throws {
     }
-    
+        
     func testLoginErrorMessageByUnknownError() async {
         let viewModel: LoginViewModel<StubAuthService> = .init()
         
         StubAuthService.shared.logInResult = .failure(AuthServiceError.unknown)
         await viewModel.loginButtonPressed()  // LoginError
-        switch viewModel.errorWrapper.authServiceError {
-        case .unknown:
-            return
-        default:
+        
+        guard case AuthServiceError.unknown = viewModel.errorWrapper.authServiceError else {
             XCTFail()
+            return
         }
     }
 }
