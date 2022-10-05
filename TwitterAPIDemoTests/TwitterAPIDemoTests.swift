@@ -16,7 +16,9 @@ final class TwitterAPIDemoTests: XCTestCase {
 
     override func tearDownWithError() throws {
     }
-        
+     
+    // MARK: - API Test
+    
     func testLoginErrorMessageByLoginError() async {
         let viewModel: LoginViewModel<StubAuthService> = .init()
         
@@ -28,5 +30,20 @@ final class TwitterAPIDemoTests: XCTestCase {
             XCTFail()
             return
         }
+    }
+    
+    // MARK: - LoginButton Tests
+    
+    func testLoginButtonEnabled() async {
+        let viewModel: LoginViewModel<StubAuthService> = .init()
+        StubAuthService.shared.logInResult = .success(())
+        
+        // ボタン押下前後の状態を確認
+        XCTAssertTrue(viewModel.isLoginButtonEnabled)
+        // iosdcの動画が出たら確認する
+//        async let logIn: Void = viewModel.loginButtonPressed()
+//        XCTAssertFalse(viewModel.isLoginButtonEnabled)
+//        await logIn
+//        XCTAssertTrue(viewModel.isLoginButtonEnabled)
     }
 }
