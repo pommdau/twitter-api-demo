@@ -10,7 +10,7 @@ import Foundation
 extension TwitterAPIRequest {
     
     struct GetInitialToken: TwitterAPIRequestProtocol {
-        typealias Response = TwitterAPIResponse.GetInitialTokenResponse
+        typealias Response = TwitterAPIResponse.GetInitialToken
         public let code: String
         
         // MARK: - Properties

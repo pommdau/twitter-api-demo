@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension TwitterService {
+extension TwitterAPIService {
     
     final class Login {
         

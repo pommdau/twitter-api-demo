@@ -25,7 +25,7 @@ struct LoginView: View {
                     .frame(width: 150, height: 150)
                 Button {
                     Task { @MainActor in
-                        await viewModel.loginButtonPressed()
+                        try await viewModel.loginButtonPressed()
                     }
                 } label: {
                     Text("Log in with Twitter")

@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum TwitterService {
+enum TwitterAPIService {
     // 各extensionで定義
 }

@@ -10,7 +10,7 @@ import Foundation
 
 extension TwitterAPIResponse {
     
-    public struct GetInitialTokenResponse: Decodable {
+    public struct GetInitialToken: Decodable {
         
         let accessToken: String
         let refreshToken: String
