@@ -20,8 +20,12 @@ final class LoginViewModel: ObservableObject {
                                                name: Notification.Name("CallbackNotification"),
                                                object: nil)
         
-        await LoginService.shared.logIn()
-//        dismiss.send()
+        TwitterService.Login.shared.openLoginPage { hoge in
+            print(hoge)
+        } failure: {
+            print("error")
+        }
+
     }
     
     @objc func handleReceivingCallbackURL(_ notification: Notification) {
