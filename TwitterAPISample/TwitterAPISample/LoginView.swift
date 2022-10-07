@@ -12,8 +12,6 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel: LoginViewModel = .init()
     
-    
-    
     var body: some View {
         
         ZStack {

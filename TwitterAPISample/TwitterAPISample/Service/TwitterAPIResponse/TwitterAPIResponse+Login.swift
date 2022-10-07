@@ -11,7 +11,7 @@ extension TwitterAPIResponse {
     
     struct Login {
         let state: String
-        let code: String
+        let code: String  // これを使ってAccessToken/RefreshTokenが取得できる
                         
         init?(queryItems: [URLQueryItem]) {
             
