@@ -10,6 +10,9 @@ import SwiftUI
 struct LoginView: View {
     
     @Environment(\.dismiss) var dismiss
+    @StateObject private var viewModel: LoginViewModel = .init()
+    
+    
     
     var body: some View {
         
@@ -22,10 +25,10 @@ struct LoginView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 150, height: 150)
-                                
                 Button {
-                    print("login...")
-                    dismiss()
+                    Task { @MainActor in
+                        await viewModel.loginButtonPressed()
+                    }
                 } label: {
                     Text("Log in with Twitter")
                         .frame(width: 200, height: 48)
@@ -35,6 +38,9 @@ struct LoginView: View {
                 }
             }
             .padding(.bottom, 60)
+        }
+        .onReceive(viewModel.dismiss) { _ in
+            dismiss()
         }
     }
 }
