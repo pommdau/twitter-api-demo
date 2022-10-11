@@ -22,7 +22,7 @@ extension TwitterAPIService {
             )
         )
         
-        var authorizeURL: URL {
+        private var authorizeURL: URL {
             get throws {
                 return client.auth.oauth20.makeOAuth2AuthorizeURL(.init(
                     clientID: TWITTER_API.clientID,
@@ -46,19 +46,21 @@ extension TwitterAPIService {
         @objc func handleReceivingCallbackURL(_ notification: Notification) {
             NotificationCenter.default.removeObserver(self)
             
-            // DEBUGGING
-//            failAuthentication()
-//            return
-            
             guard let callbackURL = notification.userInfo?[NotificationUserinfoKeys.callbackURL] as? URL,
-                  let queryItems = URLComponents(url: callbackURL , resolvingAgainstBaseURL: true)?.queryItems
-//                  let loginResponse = TwitterAPIResponse.Login(queryItems: queryItems)
+                  let queryItems = URLComponents(url: callbackURL , resolvingAgainstBaseURL: true)?.queryItems,
+                  let code = queryItems.first(where: { $0.name == "code" })?.value,
+                  let returnedState = queryItems.first(where: { $0.name == "state" })?.value
             else {
-//                failAuthentication()
+                print("Invalid return url")
                 return
             }
-//            successAuthentication(loginResponse.code)
-            print("stop")
+            
+            guard returnedState == TWITTER_API.state else {
+                print("Invalid state", TWITTER_API.state, returnedState)
+                return
+            }
+            
+            print("Result: " + code)
         }
     }
 }
