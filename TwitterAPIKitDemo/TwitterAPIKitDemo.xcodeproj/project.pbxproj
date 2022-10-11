@@ -14,6 +14,10 @@
 		DA48E82F28F55BFA00640968 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E82E28F55BFA00640968 /* Home.swift */; };
 		DA48E83228F55C3A00640968 /* TwitterAPI+const.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83128F55C3A00640968 /* TwitterAPI+const.swift */; };
 		DA48E83528F55CCB00640968 /* TwitterAPIKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA48E83428F55CCB00640968 /* TwitterAPIKit */; };
+		DA48E83728F55E4F00640968 /* TwitterAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83628F55E4F00640968 /* TwitterAPIService.swift */; };
+		DA48E83B28F55E6200640968 /* TwitterAPIService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83A28F55E6200640968 /* TwitterAPIService+Login.swift */; };
+		DA48E83D28F55F6800640968 /* Notification_Name+Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83C28F55F6800640968 /* Notification_Name+Const.swift */; };
+		DA48E83F28F55F7200640968 /* Notification+UserinfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83E28F55F7200640968 /* Notification+UserinfoKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		DA48E82E28F55BFA00640968 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		DA48E83028F55C2000640968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DA48E83128F55C3A00640968 /* TwitterAPI+const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPI+const.swift"; sourceTree = "<group>"; };
+		DA48E83628F55E4F00640968 /* TwitterAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIService.swift; sourceTree = "<group>"; };
+		DA48E83A28F55E6200640968 /* TwitterAPIService+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPIService+Login.swift"; sourceTree = "<group>"; };
+		DA48E83C28F55F6800640968 /* Notification_Name+Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification_Name+Const.swift"; sourceTree = "<group>"; };
+		DA48E83E28F55F7200640968 /* Notification+UserinfoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+UserinfoKey.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,10 @@
 				DA48E82228F55BEF00640968 /* ContentView.swift */,
 				DA48E82E28F55BFA00640968 /* Home.swift */,
 				DA48E83128F55C3A00640968 /* TwitterAPI+const.swift */,
+				DA48E83628F55E4F00640968 /* TwitterAPIService.swift */,
+				DA48E83A28F55E6200640968 /* TwitterAPIService+Login.swift */,
+				DA48E83C28F55F6800640968 /* Notification_Name+Const.swift */,
+				DA48E83E28F55F7200640968 /* Notification+UserinfoKey.swift */,
 				DA48E82428F55BEF00640968 /* Assets.xcassets */,
 				DA48E82628F55BEF00640968 /* Preview Content */,
 			);
@@ -153,10 +165,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA48E83728F55E4F00640968 /* TwitterAPIService.swift in Sources */,
 				DA48E83228F55C3A00640968 /* TwitterAPI+const.swift in Sources */,
+				DA48E83B28F55E6200640968 /* TwitterAPIService+Login.swift in Sources */,
 				DA48E82328F55BEF00640968 /* ContentView.swift in Sources */,
 				DA48E82F28F55BFA00640968 /* Home.swift in Sources */,
+				DA48E83D28F55F6800640968 /* Notification_Name+Const.swift in Sources */,
 				DA48E82128F55BEF00640968 /* TwitterAPIKitDemoApp.swift in Sources */,
+				DA48E83F28F55F7200640968 /* Notification+UserinfoKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,53 +6,20 @@
 //
 
 import SwiftUI
-import TwitterAPIKit
-import AuthenticationServices
-
-class AuthPresentationContextProver: NSObject, ASWebAuthenticationPresentationContextProviding {
-    private weak var viewController: UIViewController!
-
-    init(viewController: UIViewController) {
-        self.viewController = viewController
-        super.init()
-    }
-
-    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        return viewController?.view.window! ?? ASPresentationAnchor()
-    }
-}
 
 struct Home: View {
     
-    @State var client: TwitterAPIClient!
-    @State var presentationContextProvider: AuthPresentationContextProver?
-    
     var body: some View {
         Button {
-            runAuth()
+            TwitterAPIService.Login.shared.openLoginPage()
         } label: {
             Text("Log in")
         }
-
     }
-    
+}
+    /*
     func runAuth() {
         
-        client = TwitterAPIClient(.requestOAuth20WithPKCE(.confidentialClient(clientID: TWITTER_API.clientID,
-                                                                                              clientSecret: TWITTER_API.clientSecret)))
-        
-        let state = "<state_here>" // Rewrite your state
-
-        let clientID = TWITTER_API.clientID
-        let authorizeURL = client.auth.oauth20.makeOAuth2AuthorizeURL(.init(
-            clientID: clientID,
-            redirectURI: TWITTER_API.callbackURL,
-            state: state,
-            codeChallenge: "code challenge",
-            codeChallengeMethod: "plain", // OR S256
-            scopes: ["tweet.read", "tweet.write", "users.read", "offline.access"]
-        ))!
-
         let session = ASWebAuthenticationSession(url: authorizeURL, callbackURLScheme: TWITTER_API.callbackURLScheme) { url, error in
 //            guard let self = self else { return }
 
@@ -106,14 +73,10 @@ struct Home: View {
     }
 }
 
-//extension Home: ASWebAuthenticationPresentationContextProviding {
-//    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-//        return view.window!
-//    }
-//}
-
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+*/
