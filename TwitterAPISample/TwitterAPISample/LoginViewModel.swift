@@ -29,9 +29,9 @@ final class LoginViewModel: ObservableObject {
                 self.dismiss.send()
             }
         } failure: {
-            self.errorWrapper = .init(title: "ログイン処理でエラーが発生しました",
-                                      guidance: "コールバックURLのデコードに失敗しました",
-                                 isPresentingErrorView: true)
+            self.errorWrapper = .init(title: "Login Error",
+                                      guidance: "Failed decoding the callback URL",
+                                      isPresentingErrorView: true)
         }
     }
 }
