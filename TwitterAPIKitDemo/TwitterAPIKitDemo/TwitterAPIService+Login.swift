@@ -11,9 +11,9 @@ import UIKit
 
 extension TwitterAPIService {
     
-    final class Login {
+    final class OAuth2 {
         
-        static let shared: Login = .init()
+        static let shared: OAuth2 = .init()
         
         private var client: TwitterAPIClient = TwitterAPIClient(
             .requestOAuth20WithPKCE(
@@ -61,6 +61,39 @@ extension TwitterAPIService {
             }
             
             print("Result: " + code)
+                                    
+            client.auth.oauth20.postOAuth2AccessToken(.init(
+                code: code,
+                clientID: TWITTER_API.clientID,
+                redirectURI: TWITTER_API.callbackURL,
+                codeVerifier: TWITTER_API.codeChallenge
+            )).responseObject { response in
+                do {
+                    let tokens: TwitterOAuth2AccessToken = try response.result.get()
+                    self.client = TwitterAPIClient(.oauth20(.init(
+                        clientID: "",
+                        scope: [],
+                        tokenType: "",
+                        expiresIn: 0,
+                        accessToken: "",
+                        refreshToken: ""
+                    )))
+//                    self.env.oauthToken = nil
+//                    self.env.token = .init(clientID: clientID, token: token)
+//                    self.env.store()
+//                    self.showAlert(title: "Success!", message: nil) {
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+                } catch let error {
+//                    self.showAlert(title: "Error", message: error.localizedDescription)
+                    print("stop")
+                    print(error.localizedDescription)
+                }
+            }
+            
+//            let hoge = await client.v2.searchTweetsAll(.init(query: "マクドナルド")).responseObject
+
+//            print(hoge)
         }
     }
 }
