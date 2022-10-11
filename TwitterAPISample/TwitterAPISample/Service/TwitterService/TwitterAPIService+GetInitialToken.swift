@@ -13,8 +13,12 @@ extension TwitterAPIService {
         
         static let shared: GetInitialToken = .init()
         
+        @discardableResult
         func getInitialToken(code: String) async throws -> TwitterAPIResponse.GetInitialToken {
-            return try await request(with: TwitterAPIRequest.GetInitialToken(code: code))
+            let response =  try await request(with: TwitterAPIRequest.GetInitialToken(code: code))
+            try await TokensStore.shared.update(tokens: Tokens(accessToken: AccessToken(rawValue: response.accessToken),
+                                                               refreshToken: RefreshToken(rawValue: response.refreshToken)))
+            return response
         }
     }
 }

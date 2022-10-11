@@ -37,6 +37,10 @@ extension TwitterAPIService {
         @objc func handleReceivingCallbackURL(_ notification: Notification) {
             NotificationCenter.default.removeObserver(self)
             
+            // DEBUGGING
+//            failAuthentication()
+//            return
+            
             guard let callbackURL = notification.userInfo?[NotificationUserinfoKeys.callbackURL] as? URL,
                   let queryItems = URLComponents(url: callbackURL , resolvingAgainstBaseURL: true)?.queryItems,
                   let loginResponse = TwitterAPIResponse.Login(queryItems: queryItems)

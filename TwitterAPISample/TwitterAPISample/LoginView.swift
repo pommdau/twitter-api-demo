@@ -40,6 +40,12 @@ struct LoginView: View {
         .onReceive(viewModel.dismiss) { _ in
             dismiss()
         }
+        .alert(viewModel.errorWrapper.title,
+               isPresented: $viewModel.errorWrapper.isPresentingErrorView) {
+            Button("Close", action: {})
+        } message: {
+            Text(viewModel.errorWrapper.guidance)
+        }
     }
 }
 

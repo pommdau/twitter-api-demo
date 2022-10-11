@@ -11,6 +11,13 @@ import Combine
 @MainActor
 final class LoginViewModel: ObservableObject {
     
+    struct ErrorWrapper {
+        var title: String = ""
+        var guidance: String = ""
+        var isPresentingErrorView = false
+    }
+    
+    @Published var errorWrapper: ErrorWrapper = .init()
     let dismiss: PassthroughSubject<Void, Never> = .init()
     
     func loginButtonPressed() async throws {
@@ -19,9 +26,12 @@ final class LoginViewModel: ObservableObject {
                 let response = try await TwitterAPIService.GetInitialToken.shared.getInitialToken(code: code)
                 print("response.accessToken: \(response.accessToken)")
                 print("response.refreshToken: \(response.refreshToken)")
+                self.dismiss.send()
             }
         } failure: {
-            print("error")
+            self.errorWrapper = .init(title: "ログイン処理でエラーが発生しました",
+                                      guidance: "コールバックURLのデコードに失敗しました",
+                                 isPresentingErrorView: true)
         }
     }
 }
