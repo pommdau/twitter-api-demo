@@ -55,14 +55,14 @@
 		DAB2D44028E18DA6004CD870 /* AuthAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIError.swift; sourceTree = "<group>"; };
 		DAB2D44228E19A24004CD870 /* StubAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAuthService.swift; sourceTree = "<group>"; };
 		DAB2D44428E1CF9B004CD870 /* AuthServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceError.swift; sourceTree = "<group>"; };
-		DABC669F28DAF245008F57DA /* TwitterAPIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterAPIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DABC669F28DAF245008F57DA /* iOSDC-practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOSDC-practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABC66A228DAF245008F57DA /* TwitterAPIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoApp.swift; sourceTree = "<group>"; };
 		DABC66A428DAF245008F57DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DABC66A628DAF246008F57DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DABC66A928DAF246008F57DA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DABC66AF28DAF246008F57DA /* TwitterAPIDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterAPIDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DABC66AF28DAF246008F57DA /* iOSDC-practiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOSDC-practiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABC66B328DAF246008F57DA /* TwitterAPIDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoTests.swift; sourceTree = "<group>"; };
-		DABC66B928DAF246008F57DA /* TwitterAPIDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterAPIDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DABC66B928DAF246008F57DA /* iOSDC-practiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOSDC-practiceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABC66BD28DAF246008F57DA /* TwitterAPIDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoUITests.swift; sourceTree = "<group>"; };
 		DABC66BF28DAF246008F57DA /* TwitterAPIDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DABC66CC28DAF298008F57DA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		DABC669628DAF245008F57DA = {
 			isa = PBXGroup;
 			children = (
-				DABC66A128DAF245008F57DA /* TwitterAPIDemo */,
+				DABC66A128DAF245008F57DA /* iOSDC-practice */,
 				DABC66B228DAF246008F57DA /* TwitterAPIDemoTests */,
 				DABC66BC28DAF246008F57DA /* TwitterAPIDemoUITests */,
 				DABC66A028DAF245008F57DA /* Products */,
@@ -128,14 +128,14 @@
 		DABC66A028DAF245008F57DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DABC669F28DAF245008F57DA /* TwitterAPIDemo.app */,
-				DABC66AF28DAF246008F57DA /* TwitterAPIDemoTests.xctest */,
-				DABC66B928DAF246008F57DA /* TwitterAPIDemoUITests.xctest */,
+				DABC669F28DAF245008F57DA /* iOSDC-practice.app */,
+				DABC66AF28DAF246008F57DA /* iOSDC-practiceTests.xctest */,
+				DABC66B928DAF246008F57DA /* iOSDC-practiceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DABC66A128DAF245008F57DA /* TwitterAPIDemo */ = {
+		DABC66A128DAF245008F57DA /* iOSDC-practice */ = {
 			isa = PBXGroup;
 			children = (
 				DA7BD95A28DC01E1002A92BA /* Auth */,
@@ -147,7 +147,7 @@
 				DABC66A628DAF246008F57DA /* Assets.xcassets */,
 				DABC66A828DAF246008F57DA /* Preview Content */,
 			);
-			path = TwitterAPIDemo;
+			path = "iOSDC-practice";
 			sourceTree = "<group>";
 		};
 		DABC66A828DAF246008F57DA /* Preview Content */ = {
@@ -179,9 +179,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DABC669E28DAF245008F57DA /* TwitterAPIDemo */ = {
+		DABC669E28DAF245008F57DA /* iOSDC-practice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DABC66C328DAF246008F57DA /* Build configuration list for PBXNativeTarget "TwitterAPIDemo" */;
+			buildConfigurationList = DABC66C328DAF246008F57DA /* Build configuration list for PBXNativeTarget "iOSDC-practice" */;
 			buildPhases = (
 				DABC669B28DAF245008F57DA /* Sources */,
 				DABC669C28DAF245008F57DA /* Frameworks */,
@@ -191,14 +191,14 @@
 			);
 			dependencies = (
 			);
-			name = TwitterAPIDemo;
+			name = "iOSDC-practice";
 			productName = TwitterAPIDemo;
-			productReference = DABC669F28DAF245008F57DA /* TwitterAPIDemo.app */;
+			productReference = DABC669F28DAF245008F57DA /* iOSDC-practice.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DABC66AE28DAF246008F57DA /* TwitterAPIDemoTests */ = {
+		DABC66AE28DAF246008F57DA /* iOSDC-practiceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DABC66C628DAF246008F57DA /* Build configuration list for PBXNativeTarget "TwitterAPIDemoTests" */;
+			buildConfigurationList = DABC66C628DAF246008F57DA /* Build configuration list for PBXNativeTarget "iOSDC-practiceTests" */;
 			buildPhases = (
 				DABC66AB28DAF246008F57DA /* Sources */,
 				DABC66AC28DAF246008F57DA /* Frameworks */,
@@ -209,14 +209,14 @@
 			dependencies = (
 				DABC66B128DAF246008F57DA /* PBXTargetDependency */,
 			);
-			name = TwitterAPIDemoTests;
+			name = "iOSDC-practiceTests";
 			productName = TwitterAPIDemoTests;
-			productReference = DABC66AF28DAF246008F57DA /* TwitterAPIDemoTests.xctest */;
+			productReference = DABC66AF28DAF246008F57DA /* iOSDC-practiceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DABC66B828DAF246008F57DA /* TwitterAPIDemoUITests */ = {
+		DABC66B828DAF246008F57DA /* iOSDC-practiceUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DABC66C928DAF246008F57DA /* Build configuration list for PBXNativeTarget "TwitterAPIDemoUITests" */;
+			buildConfigurationList = DABC66C928DAF246008F57DA /* Build configuration list for PBXNativeTarget "iOSDC-practiceUITests" */;
 			buildPhases = (
 				DABC66B528DAF246008F57DA /* Sources */,
 				DABC66B628DAF246008F57DA /* Frameworks */,
@@ -227,9 +227,9 @@
 			dependencies = (
 				DABC66BB28DAF246008F57DA /* PBXTargetDependency */,
 			);
-			name = TwitterAPIDemoUITests;
+			name = "iOSDC-practiceUITests";
 			productName = TwitterAPIDemoUITests;
-			productReference = DABC66B928DAF246008F57DA /* TwitterAPIDemoUITests.xctest */;
+			productReference = DABC66B928DAF246008F57DA /* iOSDC-practiceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -255,7 +255,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DABC669A28DAF245008F57DA /* Build configuration list for PBXProject "TwitterAPIDemo" */;
+			buildConfigurationList = DABC669A28DAF245008F57DA /* Build configuration list for PBXProject "iOSDC-practice" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -268,9 +268,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DABC669E28DAF245008F57DA /* TwitterAPIDemo */,
-				DABC66AE28DAF246008F57DA /* TwitterAPIDemoTests */,
-				DABC66B828DAF246008F57DA /* TwitterAPIDemoUITests */,
+				DABC669E28DAF245008F57DA /* iOSDC-practice */,
+				DABC66AE28DAF246008F57DA /* iOSDC-practiceTests */,
+				DABC66B828DAF246008F57DA /* iOSDC-practiceUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -344,12 +344,12 @@
 /* Begin PBXTargetDependency section */
 		DABC66B128DAF246008F57DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DABC669E28DAF245008F57DA /* TwitterAPIDemo */;
+			target = DABC669E28DAF245008F57DA /* iOSDC-practice */;
 			targetProxy = DABC66B028DAF246008F57DA /* PBXContainerItemProxy */;
 		};
 		DABC66BB28DAF246008F57DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DABC669E28DAF245008F57DA /* TwitterAPIDemo */;
+			target = DABC669E28DAF245008F57DA /* iOSDC-practice */;
 			targetProxy = DABC66BA28DAF246008F57DA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -476,7 +476,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TwitterAPIDemo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iOSDC-practice/Preview Content\"";
 				DEVELOPMENT_TEAM = BWMJMJK727;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -505,7 +505,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TwitterAPIDemo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iOSDC-practice/Preview Content\"";
 				DEVELOPMENT_TEAM = BWMJMJK727;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -543,7 +543,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterAPIDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TwitterAPIDemo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSDC-practice.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iOSDC-practice";
 			};
 			name = Debug;
 		};
@@ -563,7 +563,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterAPIDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TwitterAPIDemo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSDC-practice.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iOSDC-practice";
 			};
 			name = Release;
 		};
@@ -606,7 +606,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DABC669A28DAF245008F57DA /* Build configuration list for PBXProject "TwitterAPIDemo" */ = {
+		DABC669A28DAF245008F57DA /* Build configuration list for PBXProject "iOSDC-practice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DABC66C128DAF246008F57DA /* Debug */,
@@ -615,7 +615,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DABC66C328DAF246008F57DA /* Build configuration list for PBXNativeTarget "TwitterAPIDemo" */ = {
+		DABC66C328DAF246008F57DA /* Build configuration list for PBXNativeTarget "iOSDC-practice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DABC66C428DAF246008F57DA /* Debug */,
@@ -624,7 +624,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DABC66C628DAF246008F57DA /* Build configuration list for PBXNativeTarget "TwitterAPIDemoTests" */ = {
+		DABC66C628DAF246008F57DA /* Build configuration list for PBXNativeTarget "iOSDC-practiceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DABC66C728DAF246008F57DA /* Debug */,
@@ -633,7 +633,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DABC66C928DAF246008F57DA /* Build configuration list for PBXNativeTarget "TwitterAPIDemoUITests" */ = {
+		DABC66C928DAF246008F57DA /* Build configuration list for PBXNativeTarget "iOSDC-practiceUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DABC66CA28DAF246008F57DA /* Debug */,
