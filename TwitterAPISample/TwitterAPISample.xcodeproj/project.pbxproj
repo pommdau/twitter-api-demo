@@ -33,6 +33,8 @@
 		DAB87BBC28F01682003CE2A7 /* TwitterAPIService+GetInitialToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB87BBB28F01682003CE2A7 /* TwitterAPIService+GetInitialToken.swift */; };
 		DAB87BC028F01BDF003CE2A7 /* TwitterServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB87BBF28F01BDF003CE2A7 /* TwitterServiceProtocol.swift */; };
 		DAB87BC228F01C6D003CE2A7 /* TwitterAPIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB87BC128F01C6D003CE2A7 /* TwitterAPIServiceError.swift */; };
+		DAB87BC728F435CC003CE2A7 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB87BC628F435CC003CE2A7 /* Tokens.swift */; };
+		DAB87BC928F4360A003CE2A7 /* TokensStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB87BC828F4360A003CE2A7 /* TokensStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		DAB87BBB28F01682003CE2A7 /* TwitterAPIService+GetInitialToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPIService+GetInitialToken.swift"; sourceTree = "<group>"; };
 		DAB87BBF28F01BDF003CE2A7 /* TwitterServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterServiceProtocol.swift; sourceTree = "<group>"; };
 		DAB87BC128F01C6D003CE2A7 /* TwitterAPIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIServiceError.swift; sourceTree = "<group>"; };
+		DAB87BC628F435CC003CE2A7 /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		DAB87BC828F4360A003CE2A7 /* TokensStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 			children = (
 				DAB87BB628EFE889003CE2A7 /* Info.plist */,
 				DAB87B7728EEC798003CE2A7 /* Extensions */,
+				DAB87BC328F433D8003CE2A7 /* Models */,
 				DAB87B2828ED4AE7003CE2A7 /* TwitterAPISampleApp.swift */,
 				DAB87B2A28ED4AE7003CE2A7 /* ContentView.swift */,
 				DAB87B5228EEB0E0003CE2A7 /* LoginView.swift */,
@@ -232,6 +237,15 @@
 				DAB87BB728F014CC003CE2A7 /* TwitterAPIResponse+GetInitialToken.swift */,
 			);
 			path = TwitterAPIResponse;
+			sourceTree = "<group>";
+		};
+		DAB87BC328F433D8003CE2A7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DAB87BC628F435CC003CE2A7 /* Tokens.swift */,
+				DAB87BC828F4360A003CE2A7 /* TokensStore.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,7 +387,9 @@
 				DAB87BAD28EFE47D003CE2A7 /* Notification_Name+Const.swift in Sources */,
 				DAB87B2B28ED4AE7003CE2A7 /* ContentView.swift in Sources */,
 				DAB87B2928ED4AE7003CE2A7 /* TwitterAPISampleApp.swift in Sources */,
+				DAB87BC728F435CC003CE2A7 /* Tokens.swift in Sources */,
 				DAB87BC028F01BDF003CE2A7 /* TwitterServiceProtocol.swift in Sources */,
+				DAB87BC928F4360A003CE2A7 /* TokensStore.swift in Sources */,
 				DAB87BB828F014CC003CE2A7 /* TwitterAPIResponse+GetInitialToken.swift in Sources */,
 				DAB87BAF28EFE483003CE2A7 /* Notification+UserinfoKey.swift in Sources */,
 				DAB87B9D28EFE2AD003CE2A7 /* TwitterAPIService+Login.swift in Sources */,
