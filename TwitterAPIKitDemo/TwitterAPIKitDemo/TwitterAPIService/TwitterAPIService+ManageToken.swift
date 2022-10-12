@@ -14,23 +14,16 @@ extension TwitterAPIService {
         
         static let shared: TokenManager = .init()
         
-        var client: TwitterAPIClient = TwitterAPIClient(
-            .requestOAuth20WithPKCE(
-                .confidentialClient(clientID: TWITTER_API.clientID,
-                                    clientSecret: TWITTER_API.clientSecret)
-            )
-        )
-        
+//        var client: TwitterAPIClient = TwitterAPIClient(
+//            .requestOAuth20WithPKCE(
+//                .confidentialClient(clientID: TWITTER_API.clientID,
+//                                    clientSecret: TWITTER_API.clientSecret)
+//            )
+//        )
+//
         func updateClient(withCode code: String) async throws {
             let token = try await getInitialToken(code: code)
-            client = TwitterAPIClient(.oauth20(.init(
-                clientID: TWITTER_API.clientID,
-                scope: token.scope,
-                tokenType: token.tokenType,
-                expiresIn: token.expiresIn,
-                accessToken: token.accessToken,
-                refreshToken: token.refreshToken
-            )))
+            TokensStore.shared.oAuth20 = token
         }
         
         private func getInitialToken(code: String) async throws -> TwitterOAuth2AccessToken {
@@ -47,6 +40,14 @@ extension TwitterAPIService {
         }
         
         private func getInitialToken(code: String, completion: @escaping (Result<TwitterOAuth2AccessToken, Error>) -> ()) {
+            
+            let client: TwitterAPIClient = TwitterAPIClient(
+                .requestOAuth20WithPKCE(
+                    .confidentialClient(clientID: TWITTER_API.clientID,
+                                        clientSecret: TWITTER_API.clientSecret)
+                )
+            )
+            
             client.auth.oauth20.postOAuth2AccessToken(
                 .init(
                     code: code,
@@ -62,18 +63,18 @@ extension TwitterAPIService {
                     }
                 }
         }
-        
-        
-        /*
-        
-        private func getInitialToken(code: String) async throws -> TwitterOAuth2AccessToken {
-            try await withCheckedThrowingContinuation { continuation in
-                await getInitialToken(code: code) { result in
-                    do {
-                        let token = try result.get()
-                        continuation.resume(returning: token)
-                    } catch {
-                        continuation.resume(throwing: error)
+            
+            
+            /*
+             
+             private func getInitialToken(code: String) async throws -> TwitterOAuth2AccessToken {
+             try await withCheckedThrowingContinuation { continuation in
+             await getInitialToken(code: code) { result in
+             do {
+             let token = try result.get()
+             continuation.resume(returning: token)
+             } catch {
+             continuation.resume(throwing: error)
                     }
                 }
             }

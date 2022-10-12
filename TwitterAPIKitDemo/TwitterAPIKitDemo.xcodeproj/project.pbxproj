@@ -23,6 +23,7 @@
 		DA48E84828F67EFD00640968 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84728F67EFD00640968 /* LoginView.swift */; };
 		DA48E84B28F67FCC00640968 /* Color+twitterBlue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84A28F67FCC00640968 /* Color+twitterBlue.swift */; };
 		DA48E84D28F69D1F00640968 /* TwitterAPIService+ManageToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84C28F69D1F00640968 /* TwitterAPIService+ManageToken.swift */; };
+		DA48E84F28F6B31500640968 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84E28F6B31500640968 /* TokenStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		DA48E84728F67EFD00640968 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DA48E84A28F67FCC00640968 /* Color+twitterBlue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+twitterBlue.swift"; sourceTree = "<group>"; };
 		DA48E84C28F69D1F00640968 /* TwitterAPIService+ManageToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPIService+ManageToken.swift"; sourceTree = "<group>"; };
+		DA48E84E28F6B31500640968 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				DA48E84328F65C9F00640968 /* TwitterAPIClientStore.swift */,
+				DA48E84E28F6B31500640968 /* TokenStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA48E83728F55E4F00640968 /* TwitterAPIService.swift in Sources */,
+				DA48E84F28F6B31500640968 /* TokenStore.swift in Sources */,
 				DA48E84D28F69D1F00640968 /* TwitterAPIService+ManageToken.swift in Sources */,
 				DA48E83228F55C3A00640968 /* TwitterAPI+const.swift in Sources */,
 				DA48E83B28F55E6200640968 /* TwitterAPIService+Login.swift in Sources */,

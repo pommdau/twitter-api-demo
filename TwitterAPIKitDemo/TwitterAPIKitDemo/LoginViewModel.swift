@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import Combine
 
 @MainActor
@@ -18,17 +19,23 @@ final class LoginViewModel: ObservableObject {
     }
     
     @Published var errorWrapper: ErrorWrapper = .init()
-    @Published var code: String = ""
+    @AppStorage("code") var code: String = ""
     let dismiss: PassthroughSubject<Void, Never> = .init()
-    let codeValueChanged: PassthroughSubject<String, Never> = .init()
+    let codeValueChanged: PassthroughSubject<Void, Never> = .init()
     
     func loginButtonPressed() {
         TwitterAPIService.OAuth2.shared.openLoginPage { code in
-            self.codeValueChanged.send(code)
+            self.code = code
+            self.codeValueChanged.send()
+//            self.dismiss.send()
         } failure: { errorMessage in
             self.errorWrapper = .init(title: "Login Error",
                                       guidance: errorMessage,
                                       isPresentingErrorView: true)
         }
+    }
+    
+    func getInitialTokenButtonPressed() async throws {
+        try await TwitterAPIService.TokenManager.shared.updateClient(withCode: code)
     }
 }

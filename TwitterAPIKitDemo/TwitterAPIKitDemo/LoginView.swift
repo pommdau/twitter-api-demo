@@ -12,8 +12,6 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel: LoginViewModel = .init()
     
-    @AppStorage("code") var code: String = ""
-    
     var body: some View {
         
         ZStack {
@@ -38,9 +36,25 @@ struct LoginView: View {
                 }
                                 
                 Button {
-                    print(self.code)
+                    print(viewModel.code)
+                } label: {
+                    Text("Print code value")
+                        .frame(width: 200, height: 48)
+                        .foregroundColor(.twitterBlue)
+                        .background(.white)
+                        .cornerRadius(24)
+                }
+                
+                Button {
+                    Task { @MainActor in
+                        try await viewModel.getInitialTokenButtonPressed()
+                    }
                 } label: {
                     Text("Get initial token")
+                        .frame(width: 200, height: 48)
+                        .foregroundColor(.twitterBlue)
+                        .background(.white)
+                        .cornerRadius(24)
                 }
                 
             }
@@ -49,8 +63,8 @@ struct LoginView: View {
         .onReceive(viewModel.dismiss) { _ in
             dismiss()
         }
-        .onReceive(viewModel.codeValueChanged) { code in
-            self.code = code
+        .onReceive(viewModel.codeValueChanged) { _ in
+            print("codeが更新されましたよ")
         }
         .alert(viewModel.errorWrapper.title,
                isPresented: $viewModel.errorWrapper.isPresentingErrorView) {
