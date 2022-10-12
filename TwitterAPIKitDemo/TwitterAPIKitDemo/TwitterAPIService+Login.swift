@@ -8,6 +8,7 @@
 import Foundation
 import TwitterAPIKit
 import UIKit
+import CryptoKit
 
 extension TwitterAPIService {
     
@@ -22,20 +23,15 @@ extension TwitterAPIService {
             )
         )
         
-        private var codeVerifier: String {
-            TWITTER_API.codeVerifier
-        }
-        
         private var codeChallenge: String {
-    //            Data(
-    //                SHA256.hash(data: TWITTER_API.codeChallenge.data(using: .utf8)!)
-    //            ).base64EncodedString()
-            
-            MyCrypto.sha256(codeVerifier)
-                .replacingOccurrences(of: "=", with: "")
-                .replacingOccurrences(of: "+", with: "-")
-                .replacingOccurrences(of: "/", with: "_")
-            
+            // ref: https://developers.line.biz/ja/docs/line-login/integrate-pkce/#how-to-integrate-pkce
+            Data(
+                SHA256.hash(data: TWITTER_API.codeVerifier.data(using: .utf8)!)
+            )
+            .base64EncodedString()
+            .replacingOccurrences(of: "=", with: "")
+            .replacingOccurrences(of: "+", with: "-")
+            .replacingOccurrences(of: "/", with: "_")
         }
         
         private var authorizeURL: URL {
@@ -51,7 +47,6 @@ extension TwitterAPIService {
             }
         }
                 
-        // MARK: - Login
         public func openLoginPage() {
             NotificationCenter.default.addObserver(self, selector: #selector(handleReceivingCallbackURL(_:)),
                                                    name: Notification.Name.receivedCallBackURL,
@@ -82,7 +77,7 @@ extension TwitterAPIService {
                 code: code,
                 clientID: TWITTER_API.clientID,
                 redirectURI: TWITTER_API.callbackURL,
-                codeVerifier: codeVerifier
+                codeVerifier: TWITTER_API.codeVerifier
             )).responseObject { response in
                 do {
                     let tokens: TwitterOAuth2AccessToken = try response.result.get()
