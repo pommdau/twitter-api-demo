@@ -71,12 +71,12 @@ extension TwitterAPIService {
                 do {
                     let tokens: TwitterOAuth2AccessToken = try response.result.get()
                     self.client = TwitterAPIClient(.oauth20(.init(
-                        clientID: "",
+                        clientID: TWITTER_API.clientID,
                         scope: [],
                         tokenType: "",
                         expiresIn: 0,
-                        accessToken: "",
-                        refreshToken: ""
+                        accessToken: tokens.accessToken,
+                        refreshToken: tokens.refreshToken
                     )))
 //                    self.env.oauthToken = nil
 //                    self.env.token = .init(clientID: clientID, token: token)
