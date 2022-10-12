@@ -22,14 +22,30 @@ extension TwitterAPIService {
             )
         )
         
+        private var codeVerifier: String {
+            TWITTER_API.codeVerifier
+        }
+        
+        private var codeChallenge: String {
+    //            Data(
+    //                SHA256.hash(data: TWITTER_API.codeChallenge.data(using: .utf8)!)
+    //            ).base64EncodedString()
+            
+            MyCrypto.sha256(codeVerifier)
+                .replacingOccurrences(of: "=", with: "")
+                .replacingOccurrences(of: "+", with: "-")
+                .replacingOccurrences(of: "/", with: "_")
+            
+        }
+        
         private var authorizeURL: URL {
             get throws {
                 return client.auth.oauth20.makeOAuth2AuthorizeURL(.init(
                     clientID: TWITTER_API.clientID,
                     redirectURI: TWITTER_API.callbackURL,
                     state: TWITTER_API.state,
-                    codeChallenge: TWITTER_API.codeChallenge,
-                    codeChallengeMethod: "plain", // OR S256
+                    codeChallenge: codeChallenge,
+                    codeChallengeMethod: "S256", // OR S256
                     scopes: ["tweet.read", "tweet.write", "users.read", "offline.access"]
                 ))!
             }
@@ -66,7 +82,7 @@ extension TwitterAPIService {
                 code: code,
                 clientID: TWITTER_API.clientID,
                 redirectURI: TWITTER_API.callbackURL,
-                codeVerifier: TWITTER_API.codeChallenge
+                codeVerifier: codeVerifier
             )).responseObject { response in
                 do {
                     let tokens: TwitterOAuth2AccessToken = try response.result.get()
