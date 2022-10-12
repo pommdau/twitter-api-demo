@@ -16,12 +16,8 @@ extension TwitterAPIService {
         
         static let shared: OAuth2 = .init()
         
-        private var client: TwitterAPIClient = TwitterAPIClient(
-            .requestOAuth20WithPKCE(
-                .confidentialClient(clientID: TWITTER_API.clientID,
-                                    clientSecret: TWITTER_API.clientSecret)
-            )
-        )
+        private var successAuthentication: (String) -> Void = {_ in}
+        private var failAuthentication: (String) -> Void = {_ in}
         
         private var codeChallenge: String {
             // ref: https://developers.line.biz/ja/docs/line-login/integrate-pkce/#how-to-integrate-pkce
@@ -36,18 +32,30 @@ extension TwitterAPIService {
         
         private var authorizeURL: URL {
             get throws {
+                // TODO: replacing
+                let client: TwitterAPIClient = TwitterAPIClient(
+                    .requestOAuth20WithPKCE(
+                        .confidentialClient(clientID: TWITTER_API.clientID,
+                                            clientSecret: TWITTER_API.clientSecret)
+                    )
+                )
+                
                 return client.auth.oauth20.makeOAuth2AuthorizeURL(.init(
                     clientID: TWITTER_API.clientID,
                     redirectURI: TWITTER_API.callbackURL,
                     state: TWITTER_API.state,
                     codeChallenge: codeChallenge,
-                    codeChallengeMethod: "S256", // OR S256
+                    codeChallengeMethod: "S256", // "plain" OR "S256"
                     scopes: ["tweet.read", "tweet.write", "users.read", "offline.access"]
                 ))!
             }
         }
                 
-        public func openLoginPage() {
+        public func openLoginPage(success: @escaping (String) -> Void = {_ in},
+                                  failure: @escaping (String) -> Void = {_ in}) {
+            successAuthentication = success
+            failAuthentication = failure
+            
             NotificationCenter.default.addObserver(self, selector: #selector(handleReceivingCallbackURL(_:)),
                                                    name: Notification.Name.receivedCallBackURL,
                                                    object: nil)
@@ -63,48 +71,39 @@ extension TwitterAPIService {
                   let returnedState = queryItems.first(where: { $0.name == "state" })?.value
             else {
                 print("Invalid return url")
+                failAuthentication("Invalid return url")
                 return
             }
             
             guard returnedState == TWITTER_API.state else {
                 print("Invalid state", TWITTER_API.state, returnedState)
+                failAuthentication("Invalid state")
                 return
             }
             
-            print("Result: " + code)
+            successAuthentication(code)
                                     
-            client.auth.oauth20.postOAuth2AccessToken(.init(
-                code: code,
-                clientID: TWITTER_API.clientID,
-                redirectURI: TWITTER_API.callbackURL,
-                codeVerifier: TWITTER_API.codeVerifier
-            )).responseObject { response in
-                do {
-                    let tokens: TwitterOAuth2AccessToken = try response.result.get()
-                    self.client = TwitterAPIClient(.oauth20(.init(
-                        clientID: TWITTER_API.clientID,
-                        scope: [],
-                        tokenType: "",
-                        expiresIn: 0,
-                        accessToken: tokens.accessToken,
-                        refreshToken: tokens.refreshToken
-                    )))
-//                    self.env.oauthToken = nil
-//                    self.env.token = .init(clientID: clientID, token: token)
-//                    self.env.store()
-//                    self.showAlert(title: "Success!", message: nil) {
-//                        self.navigationController?.popViewController(animated: true)
-//                    }
-                } catch let error {
-//                    self.showAlert(title: "Error", message: error.localizedDescription)
-                    print("stop")
-                    print(error.localizedDescription)
-                }
-            }
-            
-//            let hoge = await client.v2.searchTweetsAll(.init(query: "マクドナルド")).responseObject
-
-//            print(hoge)
+//            client.auth.oauth20.postOAuth2AccessToken(.init(
+//                code: code,
+//                clientID: TWITTER_API.clientID,
+//                redirectURI: TWITTER_API.callbackURL,
+//                codeVerifier: TWITTER_API.codeVerifier
+//            )).responseObject { response in
+//                do {
+//                    let token: TwitterOAuth2AccessToken = try response.result.get()
+//
+////                    self.env.oauthToken = nil
+////                    self.env.token = .init(clientID: clientID, token: token)
+////                    self.env.store()
+////                    self.showAlert(title: "Success!", message: nil) {
+////                        self.navigationController?.popViewController(animated: true)
+////                    }
+//                } catch let error {
+////                    self.showAlert(title: "Error", message: error.localizedDescription)
+//                    print("stop")
+//                    print(error.localizedDescription)
+//                }
+//            }
         }
     }
 }

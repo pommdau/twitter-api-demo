@@ -9,12 +9,17 @@ import SwiftUI
 
 struct Home: View {
     
-    var body: some View {
+    @State private var isPresentingLoginView = true
+        
+    var body: some View {        
         Button {
-            TwitterAPIService.OAuth2.shared.openLoginPage()
+            isPresentingLoginView.toggle()
         } label: {
-            Text("Log in")
+            Text("Login View")
         }
+        .fullScreenCover(isPresented: $isPresentingLoginView, content: {
+            LoginView()
+        })
     }
 }
 
