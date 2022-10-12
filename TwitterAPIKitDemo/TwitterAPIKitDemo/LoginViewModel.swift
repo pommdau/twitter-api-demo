@@ -20,10 +20,11 @@ final class LoginViewModel: ObservableObject {
     @Published var errorWrapper: ErrorWrapper = .init()
     let dismiss: PassthroughSubject<Void, Never> = .init()
     
-    func loginButtonPressed() async throws {
+    func loginButtonPressed(completion: @escaping (String) -> ()) async throws {
         
         TwitterAPIService.OAuth2.shared.openLoginPage { code in
             print(code)
+            completion(code)
         } failure: { errorMessage in
             self.errorWrapper = .init(title: "Login Error",
                                       guidance: errorMessage,

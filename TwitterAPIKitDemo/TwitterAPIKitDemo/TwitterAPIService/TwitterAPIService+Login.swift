@@ -50,7 +50,7 @@ extension TwitterAPIService {
                 ))!
             }
         }
-                
+        
         public func openLoginPage(success: @escaping (String) -> Void = {_ in},
                                   failure: @escaping (String) -> Void = {_ in}) {
             successAuthentication = success
@@ -62,7 +62,7 @@ extension TwitterAPIService {
             UIApplication.shared.open(try! authorizeURL)
         }
         
-        @objc func handleReceivingCallbackURL(_ notification: Notification) {
+        @objc private func handleReceivingCallbackURL(_ notification: Notification) {
             NotificationCenter.default.removeObserver(self)
             
             guard let callbackURL = notification.userInfo?[NotificationUserinfoKeys.callbackURL] as? URL,
@@ -81,29 +81,12 @@ extension TwitterAPIService {
                 return
             }
             
+            // DEBUGGING
+            //            failAuthentication("sample error")
+            //            return;
+            
             successAuthentication(code)
-                                    
-//            client.auth.oauth20.postOAuth2AccessToken(.init(
-//                code: code,
-//                clientID: TWITTER_API.clientID,
-//                redirectURI: TWITTER_API.callbackURL,
-//                codeVerifier: TWITTER_API.codeVerifier
-//            )).responseObject { response in
-//                do {
-//                    let token: TwitterOAuth2AccessToken = try response.result.get()
-//
-////                    self.env.oauthToken = nil
-////                    self.env.token = .init(clientID: clientID, token: token)
-////                    self.env.store()
-////                    self.showAlert(title: "Success!", message: nil) {
-////                        self.navigationController?.popViewController(animated: true)
-////                    }
-//                } catch let error {
-////                    self.showAlert(title: "Error", message: error.localizedDescription)
-//                    print("stop")
-//                    print(error.localizedDescription)
-//                }
-//            }
         }
+        
     }
 }

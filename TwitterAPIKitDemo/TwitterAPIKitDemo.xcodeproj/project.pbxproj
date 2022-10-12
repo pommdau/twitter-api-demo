@@ -18,10 +18,11 @@
 		DA48E83B28F55E6200640968 /* TwitterAPIService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83A28F55E6200640968 /* TwitterAPIService+Login.swift */; };
 		DA48E83D28F55F6800640968 /* Notification_Name+Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83C28F55F6800640968 /* Notification_Name+Const.swift */; };
 		DA48E83F28F55F7200640968 /* Notification+UserinfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83E28F55F7200640968 /* Notification+UserinfoKey.swift */; };
-		DA48E84428F65C9F00640968 /* TwitterAPIClientWrapperStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84328F65C9F00640968 /* TwitterAPIClientWrapperStore.swift */; };
+		DA48E84428F65C9F00640968 /* TwitterAPIClientStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84328F65C9F00640968 /* TwitterAPIClientStore.swift */; };
 		DA48E84628F67EF500640968 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84528F67EF500640968 /* LoginViewModel.swift */; };
 		DA48E84828F67EFD00640968 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84728F67EFD00640968 /* LoginView.swift */; };
 		DA48E84B28F67FCC00640968 /* Color+twitterBlue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84A28F67FCC00640968 /* Color+twitterBlue.swift */; };
+		DA48E84D28F69D1F00640968 /* TwitterAPIService+ManageToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84C28F69D1F00640968 /* TwitterAPIService+ManageToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,10 +38,11 @@
 		DA48E83A28F55E6200640968 /* TwitterAPIService+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPIService+Login.swift"; sourceTree = "<group>"; };
 		DA48E83C28F55F6800640968 /* Notification_Name+Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification_Name+Const.swift"; sourceTree = "<group>"; };
 		DA48E83E28F55F7200640968 /* Notification+UserinfoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+UserinfoKey.swift"; sourceTree = "<group>"; };
-		DA48E84328F65C9F00640968 /* TwitterAPIClientWrapperStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIClientWrapperStore.swift; sourceTree = "<group>"; };
+		DA48E84328F65C9F00640968 /* TwitterAPIClientStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIClientStore.swift; sourceTree = "<group>"; };
 		DA48E84528F67EF500640968 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DA48E84728F67EFD00640968 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DA48E84A28F67FCC00640968 /* Color+twitterBlue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+twitterBlue.swift"; sourceTree = "<group>"; };
+		DA48E84C28F69D1F00640968 /* TwitterAPIService+ManageToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPIService+ManageToken.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				DA48E84128F65BAC00640968 /* Extensions */,
 				DA48E83628F55E4F00640968 /* TwitterAPIService.swift */,
 				DA48E83A28F55E6200640968 /* TwitterAPIService+Login.swift */,
+				DA48E84C28F69D1F00640968 /* TwitterAPIService+ManageToken.swift */,
 			);
 			path = TwitterAPIService;
 			sourceTree = "<group>";
@@ -120,7 +123,7 @@
 		DA48E84228F65C9700640968 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DA48E84328F65C9F00640968 /* TwitterAPIClientWrapperStore.swift */,
+				DA48E84328F65C9F00640968 /* TwitterAPIClientStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,13 +213,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA48E83728F55E4F00640968 /* TwitterAPIService.swift in Sources */,
+				DA48E84D28F69D1F00640968 /* TwitterAPIService+ManageToken.swift in Sources */,
 				DA48E83228F55C3A00640968 /* TwitterAPI+const.swift in Sources */,
 				DA48E83B28F55E6200640968 /* TwitterAPIService+Login.swift in Sources */,
 				DA48E82328F55BEF00640968 /* ContentView.swift in Sources */,
 				DA48E82F28F55BFA00640968 /* Home.swift in Sources */,
 				DA48E83D28F55F6800640968 /* Notification_Name+Const.swift in Sources */,
 				DA48E82128F55BEF00640968 /* TwitterAPIKitDemoApp.swift in Sources */,
-				DA48E84428F65C9F00640968 /* TwitterAPIClientWrapperStore.swift in Sources */,
+				DA48E84428F65C9F00640968 /* TwitterAPIClientStore.swift in Sources */,
 				DA48E84828F67EFD00640968 /* LoginView.swift in Sources */,
 				DA48E84628F67EF500640968 /* LoginViewModel.swift in Sources */,
 				DA48E83F28F55F7200640968 /* Notification+UserinfoKey.swift in Sources */,

@@ -11,6 +11,7 @@ struct LoginView: View {
     
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel: LoginViewModel = .init()
+    @State private var code: String = ""
     
     var body: some View {
         
@@ -25,7 +26,9 @@ struct LoginView: View {
                     .frame(width: 150, height: 150)
                 Button {
                     Task { @MainActor in
-                        try await viewModel.loginButtonPressed()
+                        try await viewModel.loginButtonPressed { code in
+                            self.code = code
+                        }
                     }
                 } label: {
                     Text("Log in with Twitter")
@@ -34,6 +37,16 @@ struct LoginView: View {
                         .background(.white)
                         .cornerRadius(24)
                 }
+                
+                Text("code: \(code)")
+                
+                Button {
+                    
+                } label: {
+                    Text("Get initial token")
+                }
+
+                
             }
             .padding(.bottom, 60)
         }

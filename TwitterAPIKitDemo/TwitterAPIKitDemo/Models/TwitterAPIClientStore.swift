@@ -8,9 +8,9 @@
 import Foundation
 import TwitterAPIKit
 
-actor TwitterAPIClientWrapperStore {
+actor TwitterAPIClientStore {
     
-    static let shared: TwitterAPIClientWrapperStore = .init()
+    static let shared: TwitterAPIClientStore = .init()
     
     var accessToken: String {
         get {
