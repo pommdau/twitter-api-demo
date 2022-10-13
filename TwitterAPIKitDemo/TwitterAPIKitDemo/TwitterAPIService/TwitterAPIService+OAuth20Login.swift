@@ -10,6 +10,19 @@ import TwitterAPIKit
 import UIKit
 import CryptoKit
 
+struct IKEHTwitterAPIClient {
+    
+    static let shared: IKEHTwitterAPIClient = .init()
+    
+    var client: TwitterAPIClient = TwitterAPIClient(
+        .requestOAuth20WithPKCE(
+            .confidentialClient(clientID: TWITTER_API.clientID,
+                                clientSecret: TWITTER_API.clientSecret)
+        )
+    )
+    
+}
+
 extension TwitterAPIService {
     
     final class OAuth20Login {
@@ -20,6 +33,9 @@ extension TwitterAPIService {
         private var failAuthentication: (String) -> Void = {_ in}
         
         private var codeChallenge: String {
+            
+            return TWITTER_API.codeVerifier;
+            
             // ref: https://developers.line.biz/ja/docs/line-login/integrate-pkce/#how-to-integrate-pkce
             Data(
                 SHA256.hash(data: TWITTER_API.codeVerifier.data(using: .utf8)!)
@@ -32,20 +48,14 @@ extension TwitterAPIService {
         
         private var authorizeURL: URL {
             get throws {
-                // TODO: replacing
-                let client: TwitterAPIClient = TwitterAPIClient(
-                    .requestOAuth20WithPKCE(
-                        .confidentialClient(clientID: TWITTER_API.clientID,
-                                            clientSecret: TWITTER_API.clientSecret)
-                    )
-                )
                 
-                return client.auth.oauth20.makeOAuth2AuthorizeURL(.init(
+                return IKEHTwitterAPIClient.shared.client.auth.oauth20.makeOAuth2AuthorizeURL(.init(
                     clientID: TWITTER_API.clientID,
                     redirectURI: TWITTER_API.callbackURL,
                     state: TWITTER_API.state,
                     codeChallenge: codeChallenge,
-                    codeChallengeMethod: "S256", // "plain" OR "S256"
+//                    codeChallengeMethod: "S256", // "plain" OR "S256"
+                    codeChallengeMethod: "plain", // "plain" OR "S256"
                     scopes: ["tweet.read", "tweet.write", "users.read", "offline.access"]
                 ))!
             }
@@ -86,6 +96,23 @@ extension TwitterAPIService {
             //            return;
             
             successAuthentication(code)
+                
+            IKEHTwitterAPIClient.shared.client.auth.oauth20.postOAuth2AccessToken(.init(
+                code: code,
+                clientID: TWITTER_API.clientID,
+                redirectURI: TWITTER_API.callbackURL,
+                codeVerifier: TWITTER_API.codeVerifier
+            )).responseObject { response in
+                do {
+                    let tokens: TwitterOAuth2AccessToken = try response.result.get()
+                    print(tokens.refreshToken)
+                } catch let error {
+
+                    print("stop")
+                    print(error.localizedDescription)
+                }
+            }
+            
         }
         
     }

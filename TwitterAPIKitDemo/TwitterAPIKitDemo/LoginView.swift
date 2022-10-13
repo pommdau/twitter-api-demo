@@ -47,17 +47,12 @@ struct LoginView: View {
                 }
                 
                 Button {
-//                    Task { @MainActor in
-//                        try await viewModel.getInitialTokenButtonPressed()
-//                    }
-                    let client: TwitterAPIClient = TwitterAPIClient(
-                        .requestOAuth20WithPKCE(
-                            .confidentialClient(clientID: TWITTER_API.clientID,
-                                                clientSecret: TWITTER_API.clientSecret)
-                        )
-                    )
+                    Task { @MainActor in
+                        try await viewModel.getInitialTokenButtonPressed()
+                    }
+                    return;
                     
-                    client.auth.oauth20.postOAuth2AccessToken(.init(
+                    IKEHTwitterAPIClient.shared.client.auth.oauth20.postOAuth2AccessToken(.init(
                         code: viewModel.code,
                         clientID: TWITTER_API.clientID,
                         redirectURI: TWITTER_API.callbackURL,

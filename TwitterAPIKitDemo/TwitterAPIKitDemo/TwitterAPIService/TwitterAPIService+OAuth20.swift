@@ -30,14 +30,8 @@ extension TwitterAPIService {
         private func getInitialToken(code: String,
                                      completion: @escaping (Result<TwitterOAuth2AccessToken, Error>) -> ()) {
             
-            let client: TwitterAPIClient = TwitterAPIClient(
-                .requestOAuth20WithPKCE(
-                    .confidentialClient(clientID: TWITTER_API.clientID,
-                                        clientSecret: TWITTER_API.clientSecret)
-                )
-            )
-            
-            client.auth.oauth20.postOAuth2AccessToken(
+
+            IKEHTwitterAPIClient.shared.client.auth.oauth20.postOAuth2AccessToken(
                 .init(
                     code: code,
                     clientID: TWITTER_API.clientID,
@@ -45,7 +39,7 @@ extension TwitterAPIService {
                     codeVerifier: TWITTER_API.codeVerifier
                 )).responseObject { response in
                     do {
-                        let token: TwitterOAuth2AccessToken = try response.result.get()
+                        let token = try response.result.get()
                         completion(.success(token))
                     } catch {
                         completion(.failure(error))
