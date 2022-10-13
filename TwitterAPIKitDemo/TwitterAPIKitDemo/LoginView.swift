@@ -36,9 +36,12 @@ struct LoginView: View {
                 }
                                 
                 Button {
-                    print(viewModel.code)
+                    print("code: \(viewModel.code)")
+                    Task {
+                        print(await TwitterAPIService.OAuth20.shared.oAuth20 ?? "(nil)")
+                    }
                 } label: {
-                    Text("Print code value")
+                    Text("Print Debug Value")
                         .frame(width: 200, height: 48)
                         .foregroundColor(.twitterBlue)
                         .background(.white)
