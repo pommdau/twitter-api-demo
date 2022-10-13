@@ -15,14 +15,13 @@
 		DA48E83228F55C3A00640968 /* TwitterAPI+const.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83128F55C3A00640968 /* TwitterAPI+const.swift */; };
 		DA48E83528F55CCB00640968 /* TwitterAPIKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA48E83428F55CCB00640968 /* TwitterAPIKit */; };
 		DA48E83728F55E4F00640968 /* TwitterAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83628F55E4F00640968 /* TwitterAPIService.swift */; };
-		DA48E83B28F55E6200640968 /* TwitterAPIService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83A28F55E6200640968 /* TwitterAPIService+Login.swift */; };
+		DA48E83B28F55E6200640968 /* TwitterAPIService+OAuth20Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83A28F55E6200640968 /* TwitterAPIService+OAuth20Login.swift */; };
 		DA48E83D28F55F6800640968 /* Notification_Name+Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83C28F55F6800640968 /* Notification_Name+Const.swift */; };
 		DA48E83F28F55F7200640968 /* Notification+UserinfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E83E28F55F7200640968 /* Notification+UserinfoKey.swift */; };
-		DA48E84428F65C9F00640968 /* TwitterAPIClientStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84328F65C9F00640968 /* TwitterAPIClientStore.swift */; };
 		DA48E84628F67EF500640968 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84528F67EF500640968 /* LoginViewModel.swift */; };
 		DA48E84828F67EFD00640968 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84728F67EFD00640968 /* LoginView.swift */; };
 		DA48E84B28F67FCC00640968 /* Color+twitterBlue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84A28F67FCC00640968 /* Color+twitterBlue.swift */; };
-		DA48E84D28F69D1F00640968 /* TwitterAPIService+ManageToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84C28F69D1F00640968 /* TwitterAPIService+ManageToken.swift */; };
+		DA48E84D28F69D1F00640968 /* TwitterAPIService+OAuth20.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84C28F69D1F00640968 /* TwitterAPIService+OAuth20.swift */; };
 		DA48E84F28F6B31500640968 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48E84E28F6B31500640968 /* TokenStore.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,14 +35,13 @@
 		DA48E83028F55C2000640968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DA48E83128F55C3A00640968 /* TwitterAPI+const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPI+const.swift"; sourceTree = "<group>"; };
 		DA48E83628F55E4F00640968 /* TwitterAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIService.swift; sourceTree = "<group>"; };
-		DA48E83A28F55E6200640968 /* TwitterAPIService+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPIService+Login.swift"; sourceTree = "<group>"; };
+		DA48E83A28F55E6200640968 /* TwitterAPIService+OAuth20Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPIService+OAuth20Login.swift"; sourceTree = "<group>"; };
 		DA48E83C28F55F6800640968 /* Notification_Name+Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification_Name+Const.swift"; sourceTree = "<group>"; };
 		DA48E83E28F55F7200640968 /* Notification+UserinfoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+UserinfoKey.swift"; sourceTree = "<group>"; };
-		DA48E84328F65C9F00640968 /* TwitterAPIClientStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIClientStore.swift; sourceTree = "<group>"; };
 		DA48E84528F67EF500640968 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DA48E84728F67EFD00640968 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DA48E84A28F67FCC00640968 /* Color+twitterBlue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+twitterBlue.swift"; sourceTree = "<group>"; };
-		DA48E84C28F69D1F00640968 /* TwitterAPIService+ManageToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPIService+ManageToken.swift"; sourceTree = "<group>"; };
+		DA48E84C28F69D1F00640968 /* TwitterAPIService+OAuth20.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwitterAPIService+OAuth20.swift"; sourceTree = "<group>"; };
 		DA48E84E28F6B31500640968 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,8 +104,8 @@
 			children = (
 				DA48E84128F65BAC00640968 /* Extensions */,
 				DA48E83628F55E4F00640968 /* TwitterAPIService.swift */,
-				DA48E83A28F55E6200640968 /* TwitterAPIService+Login.swift */,
-				DA48E84C28F69D1F00640968 /* TwitterAPIService+ManageToken.swift */,
+				DA48E83A28F55E6200640968 /* TwitterAPIService+OAuth20Login.swift */,
+				DA48E84C28F69D1F00640968 /* TwitterAPIService+OAuth20.swift */,
 			);
 			path = TwitterAPIService;
 			sourceTree = "<group>";
@@ -125,7 +123,6 @@
 		DA48E84228F65C9700640968 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DA48E84328F65C9F00640968 /* TwitterAPIClientStore.swift */,
 				DA48E84E28F6B31500640968 /* TokenStore.swift */,
 			);
 			path = Models;
@@ -217,14 +214,13 @@
 			files = (
 				DA48E83728F55E4F00640968 /* TwitterAPIService.swift in Sources */,
 				DA48E84F28F6B31500640968 /* TokenStore.swift in Sources */,
-				DA48E84D28F69D1F00640968 /* TwitterAPIService+ManageToken.swift in Sources */,
+				DA48E84D28F69D1F00640968 /* TwitterAPIService+OAuth20.swift in Sources */,
 				DA48E83228F55C3A00640968 /* TwitterAPI+const.swift in Sources */,
-				DA48E83B28F55E6200640968 /* TwitterAPIService+Login.swift in Sources */,
+				DA48E83B28F55E6200640968 /* TwitterAPIService+OAuth20Login.swift in Sources */,
 				DA48E82328F55BEF00640968 /* ContentView.swift in Sources */,
 				DA48E82F28F55BFA00640968 /* Home.swift in Sources */,
 				DA48E83D28F55F6800640968 /* Notification_Name+Const.swift in Sources */,
 				DA48E82128F55BEF00640968 /* TwitterAPIKitDemoApp.swift in Sources */,
-				DA48E84428F65C9F00640968 /* TwitterAPIClientStore.swift in Sources */,
 				DA48E84828F67EFD00640968 /* LoginView.swift in Sources */,
 				DA48E84628F67EF500640968 /* LoginViewModel.swift in Sources */,
 				DA48E83F28F55F7200640968 /* Notification+UserinfoKey.swift in Sources */,

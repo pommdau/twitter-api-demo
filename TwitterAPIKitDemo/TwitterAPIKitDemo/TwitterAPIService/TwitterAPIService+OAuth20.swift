@@ -10,9 +10,9 @@ import TwitterAPIKit
 
 extension TwitterAPIService {
     
-    final actor GetInitialToken {
+    final actor OAuth20 {
         
-        static let shared: GetInitialToken = .init()
+        static let shared: OAuth20 = .init()
 
         func updateToken(withCode code: String) async throws {
             let token: TwitterOAuth2AccessToken = try await getInitialToken(code: code)

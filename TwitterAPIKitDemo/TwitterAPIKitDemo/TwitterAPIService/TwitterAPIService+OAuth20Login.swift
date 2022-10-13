@@ -12,9 +12,9 @@ import CryptoKit
 
 extension TwitterAPIService {
     
-    final class OAuth2 {
+    final class OAuth20Login {
         
-        static let shared: OAuth2 = .init()
+        static let shared: OAuth20Login = .init()
         
         private var successAuthentication: (String) -> Void = {_ in}
         private var failAuthentication: (String) -> Void = {_ in}

@@ -24,7 +24,7 @@ final class LoginViewModel: ObservableObject {
     let codeValueChanged: PassthroughSubject<Void, Never> = .init()
     
     func loginButtonPressed() {
-        TwitterAPIService.OAuth2.shared.openLoginPage { code in
+        TwitterAPIService.OAuth20Login.shared.openLoginPage { code in
             self.code = code
             self.codeValueChanged.send()
 //            self.dismiss.send()
@@ -36,6 +36,6 @@ final class LoginViewModel: ObservableObject {
     }
     
     func getInitialTokenButtonPressed() async throws {
-        try await TwitterAPIService.GetInitialToken.shared.updateToken(withCode: code)
+        try await TwitterAPIService.OAuth20.shared.updateToken(withCode: code)
     }
 }
