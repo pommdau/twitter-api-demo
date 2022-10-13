@@ -36,6 +36,6 @@ final class LoginViewModel: ObservableObject {
     }
     
     func getInitialTokenButtonPressed() async throws {
-        try await TwitterAPIService.TokenManager.shared.updateClient(withCode: code)
+        try await TwitterAPIService.GetInitialToken.shared.updateToken(withCode: code)
     }
 }
