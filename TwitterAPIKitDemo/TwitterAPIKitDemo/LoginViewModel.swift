@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import TwitterAPIKit
 
 @MainActor
 final class LoginViewModel: ObservableObject {
@@ -19,7 +20,8 @@ final class LoginViewModel: ObservableObject {
     }
     
     @Published var errorWrapper: ErrorWrapper = .init()
-    @AppStorage("code") var code: String = ""
+//    @AppStorage("code") var code: String = ""
+    var code: String = ""
     let dismiss: PassthroughSubject<Void, Never> = .init()
     let codeValueChanged: PassthroughSubject<Void, Never> = .init()
     
@@ -37,7 +39,10 @@ final class LoginViewModel: ObservableObject {
     
     func getInitialTokenButtonPressed() async throws {
         do {
-            try await TwitterAPIService.OAuth20.shared.updateToken(withCode: code)
+            let token: TwitterOAuth2AccessToken = try await TwitterAPIService.OAuth20.shared.getInitialToken(code: code)
+            print(token)
+            print(token.accessToken)
+            print(token.refreshToken)
         } catch {
             print(error.localizedDescription)
         }

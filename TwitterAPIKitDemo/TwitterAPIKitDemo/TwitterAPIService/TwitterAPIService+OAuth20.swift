@@ -13,28 +13,8 @@ extension TwitterAPIService {
     final actor OAuth20 {
         
         static let shared: OAuth20 = .init()
-        
-        private(set) var oAuth20: TwitterAuthenticationMethod.OAuth20? = nil
-        
-        private init() {
-            if let data = UserDefaults.standard.data(forKey: "oAuth20") {
-                self.oAuth20 = try? JSONDecoder().decode(TwitterAuthenticationMethod.OAuth20.self, from: data)
-            }
-        }
-                
-        func update(withToken token: TwitterOAuth2AccessToken) {
-            let newOAuth20: TwitterAuthenticationMethod.OAuth20 = .init(clientID: TWITTER_API.clientID,
-                                                                        token: token)
-            self.oAuth20 = newOAuth20
-            UserDefaults.standard.set(newOAuth20, forKey: "oAuth20")
-        }
-
-        func updateToken(withCode code: String) async throws {
-            let token: TwitterOAuth2AccessToken = try await getInitialToken(code: code)
-            update(withToken: token)
-        }
-        
-        private func getInitialToken(code: String) async throws -> TwitterOAuth2AccessToken {
+                                               
+        func getInitialToken(code: String) async throws -> TwitterOAuth2AccessToken {
             try await withCheckedThrowingContinuation { continuation in
                 getInitialToken(code: code) { result in
                     do {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TwitterAPIKit
 
 struct LoginView: View {
     
@@ -36,10 +37,7 @@ struct LoginView: View {
                 }
                                 
                 Button {
-                    print("code: \(viewModel.code)")
-                    Task {
-                        print(await TwitterAPIService.OAuth20.shared.oAuth20 ?? "(nil)")
-                    }
+                    
                 } label: {
                     Text("Print Debug Value")
                         .frame(width: 200, height: 48)
@@ -49,9 +47,40 @@ struct LoginView: View {
                 }
                 
                 Button {
-                    Task { @MainActor in
-                        try await viewModel.getInitialTokenButtonPressed()
+//                    Task { @MainActor in
+//                        try await viewModel.getInitialTokenButtonPressed()
+//                    }
+                    let client: TwitterAPIClient = TwitterAPIClient(
+                        .requestOAuth20WithPKCE(
+                            .confidentialClient(clientID: TWITTER_API.clientID,
+                                                clientSecret: TWITTER_API.clientSecret)
+                        )
+                    )
+                    
+                    client.auth.oauth20.postOAuth2AccessToken(.init(
+                        code: viewModel.code,
+                        clientID: TWITTER_API.clientID,
+                        redirectURI: TWITTER_API.callbackURL,
+                        codeVerifier: TWITTER_API.codeVerifier
+                    )).responseObject { response in
+                        do {
+                            let token = try response.result.get()
+                            print("Stop")
+//                            self.env.oauthToken = nil
+//                            self.env.token = .init(clientID: clientID, token: token)
+//                            self.env.store()
+//                            self.showAlert(title: "Success!", message: nil) {
+//                                self.navigationController?.popViewController(animated: true)
+//                            }
+                        } catch let error {
+//                            self.showAlert(title: "Error", message: error.localizedDescription)
+                            print(error.localizedDescription)
+                            print("Stop")
+                        }
                     }
+                    
+                    
+                    
                 } label: {
                     Text("Get initial token")
                         .frame(width: 200, height: 48)
@@ -67,7 +96,10 @@ struct LoginView: View {
             dismiss()
         }
         .onReceive(viewModel.codeValueChanged) { _ in
-            print("codeが更新されましたよ")
+            print("code \(viewModel.code)")
+            Task {
+//                try await viewModel.getInitialTokenButtonPressed()
+            }
         }
         .alert(viewModel.errorWrapper.title,
                isPresented: $viewModel.errorWrapper.isPresentingErrorView) {
