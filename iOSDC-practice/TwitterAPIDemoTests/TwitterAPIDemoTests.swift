@@ -22,8 +22,13 @@ final class TwitterAPIDemoTests: XCTestCase {
     func testLoginErrorMessageByLoginError() async {
         let viewModel: LoginViewModel<StubAuthService> = .init()
         
-        StubAuthService.shared.logInResult = .failure(AuthServiceError.login)
-        await viewModel.loginButtonPressed()  // LoginError
+        async let logIn: Void = viewModel.loginButtonPressed()
+        while StubAuthService.shared.logInContinuation == nil {
+            await Task.yield()
+        }
+        StubAuthService.shared.logInContinuation?.resume(throwing: AuthServiceError.login)
+        StubAuthService.shared.logInContinuation = nil
+        await logIn
                 
         // [SwiftのEnumをif文で比較できない（Associated Value）](https://qiita.com/y_koh/items/204f04ab11677bd73444)
         guard case AuthServiceError.login = viewModel.errorWrapper.authServiceError! else {
@@ -36,14 +41,20 @@ final class TwitterAPIDemoTests: XCTestCase {
     
     func testLoginButtonEnabled() async {
         let viewModel: LoginViewModel<StubAuthService> = .init()
-        StubAuthService.shared.logInResult = .success(())
         
         // ボタン押下前後の状態を確認
         XCTAssertTrue(viewModel.isLoginButtonEnabled)
-        // iosdcの動画が出たら確認する
-//        async let logIn: Void = viewModel.loginButtonPressed()
-//        XCTAssertFalse(viewModel.isLoginButtonEnabled)
-//        await logIn
-//        XCTAssertTrue(viewModel.isLoginButtonEnabled)
+        
+        async let logIn: Void = viewModel.loginButtonPressed()
+        // loginButtonPressedの処理を待つためのwait
+        while StubAuthService.shared.logInContinuation == nil {
+            await Task.yield()
+        }
+        
+        XCTAssertFalse(viewModel.isLoginButtonEnabled)
+        StubAuthService.shared.logInContinuation?.resume(returning: ())
+        StubAuthService.shared.logInContinuation = nil
+        await logIn
+        XCTAssertTrue(viewModel.isLoginButtonEnabled)
     }
 }
