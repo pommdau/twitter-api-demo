@@ -28,8 +28,7 @@ struct LoginView: View {
                 .frame(width: 200)
                 Spacer()
                 Button {
-                    // ログインのAPIをたたく
-                    Task { @MainActor in
+                    Task {
                         await viewModel.loginButtonPressed()
                     }
                 } label: {

@@ -31,7 +31,7 @@ extension TwitterAPIService {
         private var successAuthentication: (String) -> Void = {_ in}
         private var failAuthentication: (String) -> Void = {_ in}
         
-        private var codeChallenge: String {                
+        private var codeChallenge: String {
             // ref: https://developers.line.biz/ja/docs/line-login/integrate-pkce/#how-to-integrate-pkce
             Data(
                 SHA256.hash(data: TWITTER_API.codeVerifier.data(using: .utf8)!)

@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-
 @MainActor
 final class LoginViewModel<AuthService>: ObservableObject where AuthService: AuthServiceProtocol {
     
@@ -30,7 +29,7 @@ final class LoginViewModel<AuthService>: ObservableObject where AuthService: Aut
 
         do {
             try await AuthService.shared.logIn(for: .init(rawValue: id),
-                                               with: password)
+                                               with: password)  // actorなのでサブスレッドで実行される…？
 //            throw AuthServiceError.unknown  // デバッグ用
             dismiss.send()
         } catch {

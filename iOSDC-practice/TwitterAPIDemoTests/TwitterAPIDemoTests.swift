@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import TwitterAPIDemo
+@testable import iOSDC_practice
 
 @MainActor
 final class TwitterAPIDemoTests: XCTestCase {

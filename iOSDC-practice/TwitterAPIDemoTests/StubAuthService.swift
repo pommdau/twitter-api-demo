@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import TwitterAPIDemo
+@testable import iOSDC_practice
 
 final class StubAuthService: AuthServiceProtocol {
 
