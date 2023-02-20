@@ -6,18 +6,20 @@
 //
 
 import Foundation
-@testable import TwitterAPIDemo
+@testable import iOSDC_practice
 
 final class StubAuthService: AuthServiceProtocol {
 
     static var shared: StubAuthService = .init()
     
-    var logInResult: Result<Void, Error>?
+    var logInContinuation: CheckedContinuation<Void, Error>?  
     
     private init() {}
     
     func logIn(for id: User.ID, with password: String) async throws {
-        try logInResult!.get()
+        try await withCheckedThrowingContinuation { continuation in
+            logInContinuation = continuation
+        }
     }
     
 }
